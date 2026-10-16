@@ -2,8 +2,8 @@
   "round": 2,
   "scope": "16 cases × desktop/mobile; real isolated Chrome, with external Maps iframe isolated",
   "stats": {
-    "startTime": "2026-10-16T15:36:17.060Z",
-    "duration": 19092.314,
+    "startTime": "2026-10-16T15:52:19.709Z",
+    "duration": 18621.712,
     "expected": 32,
     "skipped": 0,
     "unexpected": 0,
@@ -20,7 +20,8 @@
     "backup export/validated confirmed restore",
     "ski/snowboard route and optional stops",
     "full print with filter/state preservation",
-    "sticky-tab scroll reset and malformed hash handling"
+    "sticky-tab scroll reset and malformed hash handling",
+    "Actual flight-condition copying with explicit manual search after external prefill failure"
   ],
   "automated_accessibility": "axe WCAG 2/2.1 A/AA: zero detected violations across all 6 panels in each viewport; not a claim of complete manual accessibility certification",
   "limitations": [

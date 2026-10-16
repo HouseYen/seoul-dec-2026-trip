@@ -11,7 +11,7 @@ test.beforeEach(async ({ page }) => {
 test('v2 has six linked tabs, valid IDs and source anchors', async ({ page }) => {
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
-  await page.goto('/');
+  await page.goto('./');
   await expect(page.locator('[data-site-version]')).toHaveText('v2.0');
   const tabs = page.getByRole('tab');
   await expect(tabs).toHaveText(tabNames);
@@ -33,7 +33,7 @@ test('v2 has six linked tabs, valid IDs and source anchors', async ({ page }) =>
 });
 
 test('date candidates and hotel base update the itinerary without implying bookings', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('./');
   await page.locator('#date-option').selectOption('2026-12-03');
   await expect(page.locator('[data-day-date="1"]')).toContainText('12/3');
   await expect(page.locator('[data-day-date="5"]')).toContainText('12/7');
@@ -50,7 +50,7 @@ test('date candidates and hotel base update the itinerary without implying booki
 });
 
 test('all five Google routes use separate accurate segment links and a real all-days list', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('./');
   await page.getByRole('tab', { name: '地圖導航', exact: true }).click();
   const dayButtons = page.locator('[data-map-day]');
   await expect(dayButtons).toHaveCount(6);
@@ -83,8 +83,9 @@ test('all five Google routes use separate accurate segment links and a real all-
   await expect(page.locator('#map-preview')).toBeHidden();
 });
 
-test('places filter, hotel scope and honest exact-date flight links are present', async ({ page }) => {
-  await page.goto('/');
+test('places filter, hotel scope and honest exact-date flight conditions are present', async ({ page }) => {
+  await page.addInitScript(() => Object.defineProperty(navigator, 'clipboard', { value: { writeText: async text => { window.copiedQuery = text; } }, configurable: true }));
+  await page.goto('./');
   await page.getByRole('tab', { name: '吃買清單', exact: true }).click();
   await page.locator('[data-place-filter="snow"]').click();
   await expect(page.locator('.place-card:visible')).toHaveCount(4);
@@ -100,8 +101,14 @@ test('places filter, hotel scope and honest exact-date flight links are present'
   await expect(page.locator('#panel-flights')).not.toContainText('US$329');
   const searches = await page.locator('a[data-flight-search]').evaluateAll(nodes => nodes.map(n => n.href));
   expect(searches.length).toBe(2);
-  expect(decodeURIComponent(searches[0])).toContain('TPE.ICN.2026-12-03*ICN.TPE.2026-12-07');
-  expect(decodeURIComponent(searches[1])).toContain('TPE.ICN.2026-12-10*ICN.TPE.2026-12-14');
+  expect(searches.every(href => !href.includes('#flt='))).toBe(true);
+  const scopes = await page.locator('a[data-flight-search]').evaluateAll(nodes => nodes.map(n => [n.dataset.departure, n.dataset.return]));
+  expect(scopes).toEqual([['2026-12-03', '2026-12-07'], ['2026-12-10', '2026-12-14']]);
+  await page.locator('[data-copy-flight="2026-12-03"]').click();
+  const copied = await page.evaluate(() => window.copiedQuery);
+  expect(copied).toContain('TPE→ICN 2026-12-03');
+  expect(copied).toContain('ICN→TPE 2026-12-07');
+  await expect(page.locator('#panel-flights')).toContainText('手動輸入');
 });
 
 test('checklist migrates original IDs, saves changes and honors reset cancellation', async ({ page }) => {
@@ -111,7 +118,7 @@ test('checklist migrates original IDs, saves changes and honors reset cancellati
       sessionStorage.setItem('seeded', 'yes');
     }
   });
-  await page.goto('/');
+  await page.goto('./');
   await page.getByRole('tab', { name: '待辦清單', exact: true }).click();
   await expect(page.locator('.todo-check')).toHaveCount(10);
   await expect(page.locator('#todo-progress-label')).toContainText('2 / 10');
@@ -131,7 +138,7 @@ test('checklist migrates original IDs, saves changes and honors reset cancellati
 });
 
 test('tab keyboard navigation and mobile layout are usable', async ({ page }) => {
-  await page.goto('/');
+  await page.goto('./');
   await page.getByRole('tab', { name: '行程總覽', exact: true }).focus();
   await page.keyboard.press('ArrowRight');
   await expect(page.getByRole('tab', { name: '地圖導航', exact: true })).toBeFocused();

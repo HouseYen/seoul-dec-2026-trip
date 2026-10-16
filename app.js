@@ -92,10 +92,23 @@
   function renderFlights() {
     byId('flight-cards').innerHTML = data.dateOptions.map((start, i) => {
       const end = dateFor(data.daysCount, start).toISOString().slice(0, 10);
-      const href = `https://www.google.com/travel/flights?hl=zh-TW&gl=TW&curr=TWD#flt=TPE.ICN.${start}*ICN.TPE.${end};c:TWD;e:1;sd:1;t:f`;
-      return `<article class="card"><span class="card-kicker">日期方案 ${i + 1}／未訂位</span><h3 class="flight-dates">${formatDate(dateFor(1, start))}–${formatDate(dateFor(data.daysCount, start))}</h3><ul class="flight-facts"><li>TPE → ICN／ICN → TPE</li><li>5 個日曆日・4 晚・跨週末</li><li>1 成人・經濟艙・直飛</li><li>同條件含稅＋兩段托運總價：待查</li></ul><a class="button primary" data-flight-search href="${escapeHTML(href)}" ${external}>查這組日期機票 ↗</a><p class="fineprint">開啟後重新核對所有條件；此連結不是報價或保留座位。</p></article>`;
+      const href = 'https://www.google.com/travel/flights?hl=zh-TW&gl=TW&curr=TWD';
+      return `<article class="card"><span class="card-kicker">日期方案 ${i + 1}／未訂位</span><h3 class="flight-dates">${formatDate(dateFor(1, start))}–${formatDate(dateFor(data.daysCount, start))}</h3><ul class="flight-facts"><li>TPE → ICN／ICN → TPE</li><li>5 個日曆日・4 晚・跨週末</li><li>1 成人・經濟艙・直飛</li><li>同條件含稅＋兩段托運總價：待查</li></ul><button class="button primary" type="button" data-copy-flight="${start}">複製這組查票條件</button><div class="card-links"><a data-flight-search data-departure="${start}" data-return="${end}" href="${escapeHTML(href)}" ${external}>開啟 Google Flights（手動填條件）↗</a></div><p class="fineprint">舊日期深連結本次未套用，已移除。請複製條件後手動輸入；這不是報價或保留座位。</p></article>`;
     }).join('');
     byId('asiana-citation').innerHTML = cite([9]);
+  }
+  async function copyFlightQuery(start) {
+    if (!data.dateOptions.includes(start)) return;
+    const end = dateFor(data.daysCount, start).toISOString().slice(0, 10);
+    const text = `去程 TPE→ICN ${start}；回程 ICN→TPE ${end}；1 成人、經濟艙、來回直飛、TWD。比較含稅及去回兩段托運後總價。`;
+    try {
+      if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(text); notify('已複製這組查票條件；請到 Google Flights 或航空官網手動輸入');
+    } catch {
+      byId('share-link-title').textContent = '手動複製機票查詢條件';
+      byId('share-link-input').value = text;
+      byId('share-link-dialog').showModal(); byId('share-link-input').focus(); byId('share-link-input').select();
+    }
   }
   function renderTodos() {
     byId('todo-groups').innerHTML = data.todoGroups.map(group => `<section class="todo-group" data-todo-group="${group.id}" aria-labelledby="todo-${group.id}-title"><h3 id="todo-${group.id}-title">${escapeHTML(group.title)}</h3><div class="todo-list">${group.items.map(item => `<label class="todo-item"><input class="todo-check" type="checkbox" data-todo-id="${item.id}"${todos[item.id] ? ' checked' : ''}><span><strong>${escapeHTML(item.title)}</strong><small>${escapeHTML(item.text)}</small></span></label>`).join('')}</div></section>`).join('');
@@ -212,6 +225,8 @@
     });
   });
   document.addEventListener('click', event => {
+    const flightCopy = event.target.closest('[data-copy-flight]');
+    if (flightCopy) copyFlightQuery(flightCopy.dataset.copyFlight);
     const opener = event.target.closest('[data-open-tab]');
     if (opener) { switchTab(opener.dataset.openTab); byId('main-content').scrollIntoView({ block: 'start' }); }
     const dayButton = event.target.closest('[data-show-day]');
@@ -253,6 +268,7 @@
         if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
         await navigator.clipboard.writeText(url); notify('已複製固定行程網址');
       } catch {
+        byId('share-link-title').textContent = '手動複製分享連結';
         byId('share-link-input').value = url;
         byId('share-link-dialog').showModal();
         byId('share-link-input').focus(); byId('share-link-input').select();
