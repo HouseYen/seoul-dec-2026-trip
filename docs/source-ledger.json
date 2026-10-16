@@ -1,0 +1,149 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "id": 1,
+      "url": "https://english.visitseoul.net/attractions/Gyeongbokgung/ENP000072",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 2,
+      "url": "https://developers.google.com/maps/documentation/urls/get-started",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 3,
+      "url": "https://developers.google.com/maps/documentation/directions/get-directions",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 4,
+      "url": "https://www.seoultravelpass.com/en/products/1496-seoul-dongdaemun-sparex-jjimjilbang-sauna-admission-ticket",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 5,
+      "url": "https://english.visitseoul.net/area/Noryangjin-Fisheries-Wholesale-Market-Noryangjin-Fish-Market/ENP009505",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 6,
+      "url": "https://english.visitseoul.net/tours/Pyeonghwa-Markets-friend-of-30-years-Dongdaemun-Grilled-Fish-Street_/11084",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 7,
+      "url": "https://www.museum.go.kr/ENG/contents/E0101010000.do",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 8,
+      "url": "https://www.airport.kr/ap_en/1396/subview.do",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 9,
+      "url": "https://flyasiana.com/C/US/EN/contents/free-baggage",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 10,
+      "url": "https://www.tigerairtw.com/zh-tw/ready-to-go/fees",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 11,
+      "url": "https://www.toyoko-inn.com/eng/search/detail/00208",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 12,
+      "url": "https://www.toyoko-inn.com/eng/search/detail/00291",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 13,
+      "url": "https://travelodgehotels.asia/travelodge-dongdaemun-seoul",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 14,
+      "url": "https://montanaski.co.kr",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 15,
+      "url": "https://www.bestsnowboard.co.kr",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 16,
+      "url": "https://www.wyndhamhotels.com/ramada/seoul-south-korea/ramada-seoul-dongdaemun/overview",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 17,
+      "url": "https://mangrove.city/en/region/dongdaemun-ddp/sinseol",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 18,
+      "url": "https://m.cjone.com/cjmmobile/store/storeAreaDetail.do?coopco_cd=7030&brnd_cd=3000&no=D176",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 19,
+      "url": "https://m.cjone.com/cjmmobile/store/storeAreaDetail.do?coopco_cd=7030&brnd_cd=3000&no=DE3C",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 20,
+      "url": "https://english.visitseoul.net/restaurants/Myeongdong-Kyoja-EN/ENP008570",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 21,
+      "url": "https://english.visitseoul.net/area/Gwangjang-Market/ENP000286",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 22,
+      "url": "https://english.visitseoul.net/attractions/Starfield-Library/ENP026558",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 23,
+      "url": "https://english.visitseoul.net/editorspicks/2025SeoulTrendReportSeongsu-dong/ENNvepwqx",
+      "title": "",
+      "accessed": "2026-10-16"
+    },
+    {
+      "id": 24,
+      "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=91565",
+      "title": "",
+      "accessed": "2026-10-16"
+    }
+  ]
+}

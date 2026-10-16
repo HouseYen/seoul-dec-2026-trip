@@ -1,0 +1,30 @@
+{
+  "round": 2,
+  "scope": "16 cases × desktop/mobile; real isolated Chrome, with external Maps iframe isolated",
+  "stats": {
+    "startTime": "2026-10-16T15:36:17.060Z",
+    "duration": 19092.314,
+    "expected": 32,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "projects": [
+    "desktop",
+    "mobile"
+  ],
+  "confirmed_fixes": [
+    "deep-link tabs and legacy anchors",
+    "denied/corrupt storage warning without load-time overwrite",
+    "share abort and manual-copy fallback",
+    "backup export/validated confirmed restore",
+    "ski/snowboard route and optional stops",
+    "full print with filter/state preservation",
+    "sticky-tab scroll reset and malformed hash handling"
+  ],
+  "automated_accessibility": "axe WCAG 2/2.1 A/AA: zero detected violations across all 6 panels in each viewport; not a claim of complete manual accessibility certification",
+  "limitations": [
+    "Not an exact-date fare/hotel availability check",
+    "Google routing and departure-day venue operations need separate confirmation"
+  ]
+}

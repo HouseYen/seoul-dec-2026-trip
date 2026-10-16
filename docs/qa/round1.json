@@ -1,0 +1,20 @@
+{
+  "round": 1,
+  "scope": "6 browser integration cases × desktop/mobile; third-party iframe isolated",
+  "baseline_red": "v1.13 fails v2 version/navigation acceptance test before implementation",
+  "stats": {
+    "startTime": "2026-10-16T15:25:30.586Z",
+    "duration": 8304.036,
+    "expected": 12,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "projects": [
+    "desktop",
+    "mobile"
+  ],
+  "limitations": [
+    "Does not verify live airfares, hotel availability, third-party routing or departure-day opening hours"
+  ]
+}
