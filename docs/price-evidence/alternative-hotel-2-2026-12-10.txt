@@ -1,0 +1,150 @@
+Creator: Hermes Agent
+Version: 1.0
+Purpose: dated read-only hotel rate evidence; no booking made
+Retrieved: 2026-10-18T03:36:02.736Z
+Source: https://bw.tripla.ai/booking/result?code=019b20a6-86ed-7b58-af35-81e2de80c0ea&checkin=2026%2F12%2F10&checkout=2026%2F12%2F14&type=rooms&is_day_use=false&order=price_low_to_high&is_including_occupied=false&rooms=%5B%7B%22adults%22%3A1%7D%5D&parentUrl=https%3A%2F%2Fwww.hotelvenueg.co.kr&parentPathname=%2F&locale=en
+Observed: 2026-12-10 to 2026-12-14, 1 adult, 1 room, 4 nights
+
+Provider search text:
+English
+Check in - check out date
+2026/12/10 - 2026/12/14
+Guests
+1 Adult, 1 Room
+Rooms
+Plans
+Show only available
+
+ Sort
+
+ Filter
+
+Search results: 3 room types
+Standard Budget (No Window)
+
+Featuring a windowless design, these small and cozy rooms offer a sense of minimalist simplicity.
+
+Please note that the layout of the room and bathroom may differ from the images shown.
+※ No parking available
+※ Bathroom type: Bathtub
+※ Complimentary toothbrushes, toothpaste, and slippers are not provided in the room.
+※ Unaccompanied minors are not allowed to stay. / Guests must be 20 years or older.
+(If found to be an unaccompanied minor at check-in, check-in may be refused and no refund will be issued.)
+※ Accommodation exceeding the standard adult capacity is not permitted.
+(Extra beds are not provided.)
+※ Pets are not allowed.
+※ Flammable materials and items with a risk of fire are strictly prohibited.
+※ A security deposit (credit card or cash) is required upon check-in.
+Only 1 room left!
+1 / 1
+Room information:
+ Room size: 18 m2 Double : 1 bed Non-smoking Bathtub Toilet
+Recommended
+Room Only
+
+Show plan details
+
+Plan information
+
+WiFi: Free
+Online Pre-payment
+Free cancellation until 2026/12/06 23:59 (local time)
+Price for 1 adult for 4 nights
+ Promotion
+Regular Rate ₩ 708,000
+₩ 637,200 for 4 nights
+(Taxes and fees included)
+Book
+Room+BF
+
+Show plan details
+
+Plan information
+
+WiFi: Free
+Online Pre-payment
+Meals: breakfast
+Free cancellation until 2026/12/06 23:59 (local time)
+Price for 1 adult for 4 nights
+ Promotion
+Regular Rate ₩ 836,000
+₩ 752,400 for 4 nights
+(Taxes and fees included)
+Book
+Superior Double
+
+Designed for both leisure and business travelers, our simple and modern Superior rooms provide a comfortable stay.
+
+Please note that the layout of the room, bathroom, and windows may differ from the images shown.
+※ No parking available
+※ Bathroom type: Shower booth or Bathtub (Cannot be pre-selected)
+※ Complimentary toothbrushes, toothpaste, and slippers are not provided in the room.
+※ Unaccompanied minors are not allowed to stay. / Guests must be 20 years or older.
+(If found to be an unaccompanied minor at check-in, check-in may be refused and no refund will be issued.)
+※ Accommodation exceeding the standard adult capacity is not permitted.
+(Extra beds are not provided.)
+※ Pets are not allowed.
+※ Flammable materials and items with a risk of fire are strictly prohibited.
+※ A security deposit (credit card or cash) is required upon check-in.
+Only 2 rooms left!
+1 / 5
+Previous slide
+Next slide
+Room information:
+ Room size: 21 m2 Double : 1 bed Non-smoking Bathtub Toilet
+Recommended
+Room Only
+
+Show plan details
+
+Plan information
+
+WiFi: Free
+Online Pre-payment
+Free cancellation until 2026/12/06 23:59 (local time)
+Price for 1 adult for 4 nights
+ Promotion
+Regular Rate ₩ 750,000
+₩ 675,000 for 4 nights
+(Taxes and fees included)
+Book
+Room+BF
+
+Show plan details
+
+Plan information
+
+WiFi: Free
+Online Pre-payment
+Meals: breakfast
+Free cancellation until 2026/12/06 23:59 (local time)
+Price for 1 adult for 4 nights
+ Promotion
+Regular Rate ₩ 878,000
+₩ 790,200 for 4 nights
+(Taxes and fees included)
+Book
+Hotel Contact (호텔연락처): res@hotelvenueg.co.kr | +82-2-2223-6500
+Online payment is processed by:
+tripla Co., Ltd. (Korea branch)
+CEO: Kazuhisa Takahashi
+Business registration number: 538-84-00072
+3F Concordian Building, 76 Saemunan-ro, Jung-gu, Seoul, South Korea (P. 03185)
+support_ko@tripla.io
+
+Provider cancellation policy:
+The following cancellation fees will apply to your booking:
+
+4 day(s) before check-in: free of charge.
+
+3 day(s) before check-in: 100% of the rate.
+
+2 day(s) before check-in: 100% of the rate.
+
+1 day(s) before check-in: 100% of the rate.
+
+On check-in day: 100% of the rate.
+
+No Show: 100% of the rate.
+
+*All cancellation policy are calculated based upon local time.

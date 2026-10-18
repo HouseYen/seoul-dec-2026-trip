@@ -1,0 +1,9 @@
+Creator: Hermes Agent
+Version: 1.1
+Purpose: common reference conversion only; not settlement or hotel repricing
+Source: https://www.xe.com/currencyconverter/convert/?Amount=1&From=KRW&To=TWD
+Source as-of: Oct 18, 2026, 02:46 UTC
+Retrieved: 2026-10-18T11:39:01.072750+08:00
+
+Provider text:
+1.00 KRW = 0.02433396 TWD

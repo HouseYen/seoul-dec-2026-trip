@@ -1,0 +1,12 @@
+Creator: Hermes Agent
+Version: 1.0
+Purpose: official-search blocker, NOT a fare
+Retrieved: 2026-10-18T10:44:59.717000+08:00
+Public entry: https://flights.china-airlines.com/en-tw/flights-from-taipei-to-seoul
+Requested: 2026-12-03 to 2026-12-07, TPE-ICN round trip, 1 adult Economy
+Search target host: bookingportal.china-airlines.com
+Analytics query omitted from this public artifact.
+
+Provider response excerpt:
+Access Denied
+You don't have permission to access "http://bookingportal.china-airlines.com/eRetailPortal/Booking.svc/Booking/Search?" on this server.

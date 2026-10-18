@@ -12,7 +12,7 @@ test('v2 has six linked tabs, valid IDs and source anchors', async ({ page }) =>
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('./');
-  await expect(page.locator('[data-site-version]')).toHaveText('v2.0');
+  await expect(page.locator('[data-site-version]')).toHaveText('v2.1');
   const tabs = page.getByRole('tab');
   await expect(tabs).toHaveText(tabNames);
   for (const name of tabNames) {

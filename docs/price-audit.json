@@ -1,0 +1,854 @@
+{
+  "created_by": "豪斯的 Hermes Agent",
+  "version": "1.1",
+  "reviewedOn": "2026-10-18",
+  "created_at": "2026-10-18T11:37:40.153281+08:00",
+  "purpose": "指定日期價格查核；並未訂票、訂房或付款",
+  "comparison_baggage_assumption_kg": 20,
+  "hotel_per_night_cap_twd": 3000,
+  "hotelBudgetSatisfied": false,
+  "alternativeResearchStatus": "completed_with_gaps",
+  "exchangeRate": {
+    "from_currency": "KRW",
+    "to_currency": "TWD",
+    "twd_per_krw": 0.02433396,
+    "source_url": "https://www.xe.com/currencyconverter/convert/?Amount=1&From=KRW&To=TWD",
+    "source_as_of": "Oct 18, 2026, 02:46 UTC",
+    "retrieved_at": "2026-10-18T11:39:01.072750+08:00",
+    "kind": "mid-market reference, not hotel TWD checkout price or card settlement",
+    "source_id": 48
+  },
+  "hotels": [
+    {
+      "id": "original-1",
+      "origin": "original",
+      "hotel": "Toyoko Inn Seoul Dongdaemun No.1",
+      "checkin": "2026-12-03",
+      "checkout": "2026-12-07",
+      "adults": 1,
+      "rooms": 1,
+      "nights": 4,
+      "room_type": null,
+      "currency": null,
+      "nightly_amounts": null,
+      "total_amount": null,
+      "taxes_and_fees_total": null,
+      "tax_scope": "未取得房價與稅費",
+      "cancellation": "未取得取消條款",
+      "status": "blocked",
+      "budget_state": "unknown",
+      "budget_note": "官網此查詢未提供可用報價；不是所有通路售罄",
+      "estimated_total_twd": null,
+      "nightly_estimates_twd": [],
+      "source_url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00208&start=2026-12-03&end=2026-12-07&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "refs": [
+        40
+      ],
+      "retrieved_at": "2026-10-18T02:49:13.664Z",
+      "evidence": "docs/price-evidence/hotel-1-2026-12-03.txt",
+      "private_bathroom_scope": "飯店一般設備有獨立衛浴；未有指定日期可訂房型",
+      "price_is_estimate_in_twd": false
+    },
+    {
+      "id": "original-2",
+      "origin": "original",
+      "hotel": "Toyoko Inn Seoul Dongdaemun No.1",
+      "checkin": "2026-12-10",
+      "checkout": "2026-12-14",
+      "adults": 1,
+      "rooms": 1,
+      "nights": 4,
+      "room_type": null,
+      "currency": null,
+      "nightly_amounts": null,
+      "total_amount": null,
+      "taxes_and_fees_total": null,
+      "tax_scope": "未取得房價與稅費",
+      "cancellation": "未取得取消條款",
+      "status": "blocked",
+      "budget_state": "unknown",
+      "budget_note": "官網此查詢未提供可用報價；不是所有通路售罄",
+      "estimated_total_twd": null,
+      "nightly_estimates_twd": [],
+      "source_url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00208&start=2026-12-10&end=2026-12-14&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "refs": [
+        41
+      ],
+      "retrieved_at": "2026-10-18T02:49:13.665Z",
+      "evidence": "docs/price-evidence/hotel-2-2026-12-10.txt",
+      "private_bathroom_scope": "飯店一般設備有獨立衛浴；未有指定日期可訂房型",
+      "price_is_estimate_in_twd": false
+    },
+    {
+      "id": "original-3",
+      "origin": "original",
+      "hotel": "Toyoko Inn Seoul Dongdaemun No.2",
+      "checkin": "2026-12-03",
+      "checkout": "2026-12-07",
+      "adults": 1,
+      "rooms": 1,
+      "nights": 4,
+      "room_type": null,
+      "currency": null,
+      "nightly_amounts": null,
+      "total_amount": null,
+      "taxes_and_fees_total": null,
+      "tax_scope": "未取得房價與稅費",
+      "cancellation": "未取得取消條款",
+      "status": "blocked",
+      "budget_state": "unknown",
+      "budget_note": "官網此查詢未提供可用報價；不是所有通路售罄",
+      "estimated_total_twd": null,
+      "nightly_estimates_twd": [],
+      "source_url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00291&start=2026-12-03&end=2026-12-07&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "refs": [
+        42
+      ],
+      "retrieved_at": "2026-10-18T02:49:13.358Z",
+      "evidence": "docs/price-evidence/hotel-3-2026-12-03.txt",
+      "private_bathroom_scope": "飯店一般設備有獨立衛浴；未有指定日期可訂房型",
+      "price_is_estimate_in_twd": false
+    },
+    {
+      "id": "original-4",
+      "origin": "original",
+      "hotel": "Toyoko Inn Seoul Dongdaemun No.2",
+      "checkin": "2026-12-10",
+      "checkout": "2026-12-14",
+      "adults": 1,
+      "rooms": 1,
+      "nights": 4,
+      "room_type": null,
+      "currency": null,
+      "nightly_amounts": null,
+      "total_amount": null,
+      "taxes_and_fees_total": null,
+      "tax_scope": "未取得房價與稅費",
+      "cancellation": "未取得取消條款",
+      "status": "blocked",
+      "budget_state": "unknown",
+      "budget_note": "官網此查詢未提供可用報價；不是所有通路售罄",
+      "estimated_total_twd": null,
+      "nightly_estimates_twd": [],
+      "source_url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00291&start=2026-12-10&end=2026-12-14&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "refs": [
+        43
+      ],
+      "retrieved_at": "2026-10-18T02:49:13.346Z",
+      "evidence": "docs/price-evidence/hotel-4-2026-12-10.txt",
+      "private_bathroom_scope": "飯店一般設備有獨立衛浴；未有指定日期可訂房型",
+      "price_is_estimate_in_twd": false
+    },
+    {
+      "id": "original-5",
+      "origin": "original",
+      "hotel": "Travelodge Dongdaemun Seoul",
+      "checkin": "2026-12-03",
+      "checkout": "2026-12-07",
+      "adults": 1,
+      "rooms": 1,
+      "nights": 4,
+      "room_type": "Standard Single",
+      "currency": "KRW",
+      "nightly_amounts": [
+        {
+          "date": "2026-12-03",
+          "amount": 91930,
+          "currency": "KRW",
+          "taxes_included": false,
+          "basis": "discounted room charge excluding taxes and fees",
+          "source_rendered_amount": "KRW 91,930",
+          "tax_included": false
+        },
+        {
+          "date": "2026-12-04",
+          "amount": 199710,
+          "currency": "KRW",
+          "taxes_included": false,
+          "basis": "discounted room charge excluding taxes and fees",
+          "source_rendered_amount": "KRW 199,710",
+          "tax_included": false
+        },
+        {
+          "date": "2026-12-05",
+          "amount": 212390,
+          "currency": "KRW",
+          "taxes_included": false,
+          "basis": "discounted room charge excluding taxes and fees",
+          "source_rendered_amount": "KRW 212,390",
+          "tax_included": false
+        },
+        {
+          "date": "2026-12-06",
+          "amount": 91930,
+          "currency": "KRW",
+          "taxes_included": false,
+          "basis": "discounted room charge excluding taxes and fees",
+          "source_rendered_amount": "KRW 91,930",
+          "tax_included": false
+        }
+      ],
+      "total_amount": 655556,
+      "taxes_and_fees_total": 59596,
+      "tax_scope": "總額含頁面已列稅費；逐晚為未稅房費，總稅費未自行分攤",
+      "cancellation": "Reservation must be modified or cancelled at least 72 hours prior to arrival by local time 6pm to avoid 1 night penalty.",
+      "status": "partial",
+      "budget_state": "over-cap-estimate",
+      "budget_note": "所見週五／週六未稅換算已超過上限，不能列為逐晚合格方案",
+      "estimated_total_twd": 15952.27,
+      "nightly_estimates_twd": [
+        {
+          "date": "2026-12-03",
+          "estimated_twd": 2237.02,
+          "tax_included": false
+        },
+        {
+          "date": "2026-12-04",
+          "estimated_twd": 4859.74,
+          "tax_included": false
+        },
+        {
+          "date": "2026-12-05",
+          "estimated_twd": 5168.29,
+          "tax_included": false
+        },
+        {
+          "date": "2026-12-06",
+          "estimated_twd": 2237.02,
+          "tax_included": false
+        }
+      ],
+      "source_url": "https://booking.travelodgehotels.asia/ibe/index.aspx?langid=1&adults=1&nights=4&rooms=1&propertyid=16811&checkin=12/03/2026&checkout=12/07/2026",
+      "refs": [
+        44,
+        45,
+        48
+      ],
+      "retrieved_at": "2026-10-18T02:45:36.438Z",
+      "evidence": "docs/price-evidence/hotel-5-2026-12-03.txt",
+      "private_bathroom_scope": "官方整間房型；私人衛浴另以同地址 OTA 介紹交叉確認",
+      "price_is_estimate_in_twd": true,
+      "rate_name": "Early Bird"
+    },
+    {
+      "id": "original-6",
+      "origin": "original",
+      "hotel": "Travelodge Dongdaemun Seoul",
+      "checkin": "2026-12-10",
+      "checkout": "2026-12-14",
+      "adults": 1,
+      "rooms": 1,
+      "nights": 4,
+      "room_type": "Superior Queen",
+      "currency": "KRW",
+      "nightly_amounts": [
+        {
+          "date": "2026-12-10",
+          "amount": 107780,
+          "currency": "KRW",
+          "taxes_included": false,
+          "basis": "discounted room charge excluding taxes and fees",
+          "source_rendered_amount": "KRW 107,780",
+          "tax_included": false
+        },
+        {
+          "date": "2026-12-11",
+          "amount": 145820,
+          "currency": "KRW",
+          "taxes_included": false,
+          "basis": "discounted room charge excluding taxes and fees",
+          "source_rendered_amount": "KRW 145,820",
+          "tax_included": false
+        },
+        {
+          "date": "2026-12-12",
+          "amount": 177520,
+          "currency": "KRW",
+          "taxes_included": false,
+          "basis": "discounted room charge excluding taxes and fees",
+          "source_rendered_amount": "KRW 177,520",
+          "tax_included": false
+        },
+        {
+          "date": "2026-12-13",
+          "amount": 82420,
+          "currency": "KRW",
+          "taxes_included": false,
+          "basis": "discounted room charge excluding taxes and fees",
+          "source_rendered_amount": "KRW 82,420",
+          "tax_included": false
+        }
+      ],
+      "total_amount": 564894,
+      "taxes_and_fees_total": 51354,
+      "tax_scope": "總額含頁面已列稅費；逐晚為未稅房費，總稅費未自行分攤",
+      "cancellation": "Reservation must be modified or cancelled at least 72 hours prior to arrival by local time 6pm to avoid 1 night penalty.",
+      "status": "partial",
+      "budget_state": "over-cap-estimate",
+      "budget_note": "所見週五／週六未稅換算已超過上限，不能列為逐晚合格方案",
+      "estimated_total_twd": 13746.11,
+      "nightly_estimates_twd": [
+        {
+          "date": "2026-12-10",
+          "estimated_twd": 2622.71,
+          "tax_included": false
+        },
+        {
+          "date": "2026-12-11",
+          "estimated_twd": 3548.38,
+          "tax_included": false
+        },
+        {
+          "date": "2026-12-12",
+          "estimated_twd": 4319.76,
+          "tax_included": false
+        },
+        {
+          "date": "2026-12-13",
+          "estimated_twd": 2005.6,
+          "tax_included": false
+        }
+      ],
+      "source_url": "https://booking.travelodgehotels.asia/ibe/index.aspx?langid=1&adults=1&nights=4&rooms=1&propertyid=16811&checkin=12/10/2026&checkout=12/14/2026",
+      "refs": [
+        46,
+        47,
+        48
+      ],
+      "retrieved_at": "2026-10-18T02:45:36.425Z",
+      "evidence": "docs/price-evidence/hotel-6-2026-12-10.txt",
+      "private_bathroom_scope": "官方整間房型；私人衛浴另以同地址 OTA 介紹交叉確認",
+      "price_is_estimate_in_twd": true,
+      "rate_name": "Early Bird"
+    },
+    {
+      "id": "alternative-1",
+      "origin": "alternative",
+      "hotel": "Hotel Venue G (Hotel Venue-G Seoul)",
+      "address": "117, Cheonggyecheon-ro, Jongno-gu, Seoul, Republic of Korea",
+      "location_note": "鍾路／清溪川替代案，非明洞或東大門；117, Cheonggyecheon-ro, Jongno-gu, Seoul, Republic of Korea。原地圖錨點未改為此飯店。",
+      "checkin": "2026-12-03",
+      "checkout": "2026-12-07",
+      "adults": 1,
+      "rooms": 1,
+      "nights": 4,
+      "room_type": "Superior Double",
+      "rate_name": "Room Only / Promotion / Online Pre-payment",
+      "currency": "KRW",
+      "nightly_amounts": [
+        {
+          "date": "2026-12-03",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        },
+        {
+          "date": "2026-12-04",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        },
+        {
+          "date": "2026-12-05",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        },
+        {
+          "date": "2026-12-06",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        }
+      ],
+      "total_amount": 749700,
+      "taxes_and_fees_total": null,
+      "tax_scope": "四晚總額含頁面已列稅費；逐晚拆價未取得，稅費拆額亦未取得，未自行分攤。入住另需押金，金額未取得。",
+      "cancellation": "Free cancellation until 2026/11/29 23:59 (local time)；入住前3日起及no-show按所見方案收100%費用。",
+      "status": "partial_quote_available_total_verified_nightly_breakdown_unavailable",
+      "budget_state": "over-cap-total-estimate",
+      "budget_note": "依共同參考匯率，四晚含已列稅費總額已超過NT$12,000，不能每晚都在NT$3,000內；逐晚拆價未取得。",
+      "estimated_total_twd": 18243.17,
+      "source_url": "https://bw.tripla.ai/booking/result?code=019b20a6-86ed-7b58-af35-81e2de80c0ea&checkin=2026%2F12%2F03&checkout=2026%2F12%2F07&type=rooms&is_day_use=false&order=price_low_to_high&is_including_occupied=false&rooms=%5B%7B%22adults%22%3A1%7D%5D&parentUrl=https%3A%2F%2Fwww.hotelvenueg.co.kr&parentPathname=%2F&locale=en",
+      "refs": [
+        53,
+        51,
+        48
+      ],
+      "retrieved_at": "2026-10-18T03:36:02.135Z",
+      "evidence": "docs/price-evidence/alternative-hotel-1-2026-12-03.txt",
+      "private_bathroom_scope": "※ Bathroom type: Shower booth or Bathtub (Cannot be pre-selected)",
+      "price_is_estimate_in_twd": true
+    },
+    {
+      "id": "alternative-2",
+      "origin": "alternative",
+      "hotel": "Hotel Venue G (Hotel Venue-G Seoul)",
+      "address": "117, Cheonggyecheon-ro, Jongno-gu, Seoul, Republic of Korea",
+      "location_note": "鍾路／清溪川替代案，非明洞或東大門；117, Cheonggyecheon-ro, Jongno-gu, Seoul, Republic of Korea。原地圖錨點未改為此飯店。",
+      "checkin": "2026-12-10",
+      "checkout": "2026-12-14",
+      "adults": 1,
+      "rooms": 1,
+      "nights": 4,
+      "room_type": "Standard Budget (No Window)",
+      "rate_name": "Room Only / Promotion / Online Pre-payment",
+      "currency": "KRW",
+      "nightly_amounts": [
+        {
+          "date": "2026-12-10",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        },
+        {
+          "date": "2026-12-11",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        },
+        {
+          "date": "2026-12-12",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        },
+        {
+          "date": "2026-12-13",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        }
+      ],
+      "total_amount": 637200,
+      "taxes_and_fees_total": null,
+      "tax_scope": "四晚總額含頁面已列稅費；逐晚拆價未取得，稅費拆額亦未取得，未自行分攤。入住另需押金，金額未取得。",
+      "cancellation": "Free cancellation until 2026/12/06 23:59 (local time)；入住前3日起及no-show按所見方案收100%費用。",
+      "status": "partial_quote_available_total_verified_nightly_breakdown_unavailable",
+      "budget_state": "over-cap-total-estimate",
+      "budget_note": "依共同參考匯率，四晚含已列稅費總額已超過NT$12,000，不能每晚都在NT$3,000內；逐晚拆價未取得。",
+      "estimated_total_twd": 15505.6,
+      "source_url": "https://bw.tripla.ai/booking/result?code=019b20a6-86ed-7b58-af35-81e2de80c0ea&checkin=2026%2F12%2F10&checkout=2026%2F12%2F14&type=rooms&is_day_use=false&order=price_low_to_high&is_including_occupied=false&rooms=%5B%7B%22adults%22%3A1%7D%5D&parentUrl=https%3A%2F%2Fwww.hotelvenueg.co.kr&parentPathname=%2F&locale=en",
+      "refs": [
+        54,
+        51,
+        48
+      ],
+      "retrieved_at": "2026-10-18T03:36:02.736Z",
+      "evidence": "docs/price-evidence/alternative-hotel-2-2026-12-10.txt",
+      "private_bathroom_scope": "※ Bathroom type: Bathtub",
+      "price_is_estimate_in_twd": true
+    },
+    {
+      "id": "alternative-3",
+      "origin": "alternative",
+      "hotel": "Toyoko Inn Seoul Yeongdeungpo",
+      "address": "293, Singil-ro, Yeongdeungpo-gu, Seoul 07306 Republic of Korea",
+      "location_note": "永登浦區，移出原明洞／東大門住宿區的備案；293, Singil-ro, Yeongdeungpo-gu, Seoul 07306 Republic of Korea。原地圖錨點未改為此飯店。",
+      "checkin": "2026-12-03",
+      "checkout": "2026-12-07",
+      "adults": 1,
+      "rooms": 1,
+      "nights": 4,
+      "room_type": null,
+      "rate_name": null,
+      "currency": null,
+      "nightly_amounts": [
+        {
+          "date": "2026-12-03",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        },
+        {
+          "date": "2026-12-04",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        },
+        {
+          "date": "2026-12-05",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        },
+        {
+          "date": "2026-12-06",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        }
+      ],
+      "total_amount": null,
+      "taxes_and_fees_total": null,
+      "tax_scope": "指定日期房價、稅費與取消條款未取得",
+      "cancellation": "未取得取消條款",
+      "status": "no_available_room_plan_displayed_official_channel",
+      "budget_state": "unknown",
+      "budget_note": "官網此查詢未提供可用報價；不是所有通路售罄。",
+      "estimated_total_twd": null,
+      "source_url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00311&start=2026-12-03&end=2026-12-07&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "refs": [
+        55,
+        52
+      ],
+      "retrieved_at": "2026-10-18T03:35:56.599Z",
+      "evidence": "docs/price-evidence/alternative-hotel-3-2026-12-03.txt",
+      "private_bathroom_scope": "官方一般設備列Unit Bath；指定日期未有可訂房型",
+      "price_is_estimate_in_twd": false
+    },
+    {
+      "id": "alternative-4",
+      "origin": "alternative",
+      "hotel": "Toyoko Inn Seoul Yeongdeungpo",
+      "address": "293, Singil-ro, Yeongdeungpo-gu, Seoul 07306 Republic of Korea",
+      "location_note": "永登浦區，移出原明洞／東大門住宿區的備案；293, Singil-ro, Yeongdeungpo-gu, Seoul 07306 Republic of Korea。原地圖錨點未改為此飯店。",
+      "checkin": "2026-12-10",
+      "checkout": "2026-12-14",
+      "adults": 1,
+      "rooms": 1,
+      "nights": 4,
+      "room_type": null,
+      "rate_name": null,
+      "currency": null,
+      "nightly_amounts": [
+        {
+          "date": "2026-12-10",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        },
+        {
+          "date": "2026-12-11",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        },
+        {
+          "date": "2026-12-12",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        },
+        {
+          "date": "2026-12-13",
+          "amount": null,
+          "taxes_fees_amount": null,
+          "total_with_taxes_fees": null
+        }
+      ],
+      "total_amount": null,
+      "taxes_and_fees_total": null,
+      "tax_scope": "指定日期房價、稅費與取消條款未取得",
+      "cancellation": "未取得取消條款",
+      "status": "no_available_room_plan_displayed_official_channel",
+      "budget_state": "unknown",
+      "budget_note": "官網此查詢未提供可用報價；不是所有通路售罄。",
+      "estimated_total_twd": null,
+      "source_url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00311&start=2026-12-10&end=2026-12-14&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "refs": [
+        56,
+        52
+      ],
+      "retrieved_at": "2026-10-18T03:35:56.599Z",
+      "evidence": "docs/price-evidence/alternative-hotel-4-2026-12-10.txt",
+      "private_bathroom_scope": "官方一般設備列Unit Bath；指定日期未有可訂房型",
+      "price_is_estimate_in_twd": false
+    }
+  ],
+  "flights": [
+    {
+      "id": "a-afternoon-return",
+      "outbound_date": "2026-12-03",
+      "return_date": "2026-12-07",
+      "route": "TPE–ICN / ICN–TPE",
+      "carrier": "Asiana Airlines",
+      "outbound_local": "17:05–20:30",
+      "return_local": "13:50–15:55",
+      "adult_count": 1,
+      "cabin": "Economy",
+      "nonstop_both": true,
+      "currency": "TWD",
+      "observed_total": 9736,
+      "first_checked_bag_free_entire_trip": true,
+      "status": "observed_not_carrier_repriced",
+      "carrier_reprice_status": "ERR_HTTP2_PROTOCOL_ERROR on airline handoff",
+      "source_url": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpBEgoyMDI2LTEyLTAzIh8KA1RQRRIKMjAyNi0xMi0wMxoDSUNOKgJPWjIDNzE0KABqBwgBEgNUUEVyBwgBEgNJQ04aQRIKMjAyNi0xMi0wNyIfCgNJQ04SCjIwMjYtMTItMDcaA1RQRSoCT1oyAzcxMygAagcIARIDSUNOcgcIARIDVFBFQAFIAXABggELCP___________wGYAQE&tfu=CmxDalJJUlZvelIyeEpYMVY0VVhkQlMwSTRTMEZDUnkwdExTMHRMUzB0ZEd4aVlYa3lOVUZCUVVGQlIzSlZUWHBaU21Jd2FVRkJFZ2RQV2pjeE15TXhHZ29JaUV3UUFCb0RWRmRFT0J4d3NPb0ISAggAIgA&hl=en&gl=TW&curr=TWD",
+      "retrieved_at": "2026-10-18T02:47:41.637Z",
+      "retrieved_at_taipei": "2026-10-18T10:47:41.637000+08:00",
+      "refs": [
+        37,
+        9
+      ],
+      "evidence": "docs/price-evidence/flight-a-afternoon-return.txt",
+      "source_id": 37,
+      "bag_weight_policy_kg": 23,
+      "bag_weight_scope": "23 kg 為韓亞非美線一般經濟艙規則，並非票種或雪具條款復價確認"
+    },
+    {
+      "id": "b-afternoon-return",
+      "outbound_date": "2026-12-10",
+      "return_date": "2026-12-14",
+      "route": "TPE–ICN / ICN–TPE",
+      "carrier": "Asiana Airlines",
+      "outbound_local": "17:05–20:30",
+      "return_local": "13:50–15:55",
+      "adult_count": 1,
+      "cabin": "Economy",
+      "nonstop_both": true,
+      "currency": "TWD",
+      "observed_total": 13567,
+      "first_checked_bag_free_entire_trip": true,
+      "status": "observed_not_carrier_repriced",
+      "carrier_reprice_status": "not independently repriced",
+      "source_url": "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI2LTEyLTEwIh8KA1RQRRIKMjAyNi0xMi0xMBoDSUNOKgJPWjIDNzE0agcIARIDVFBFcgcIARIDSUNOGkESCjIwMjYtMTItMTQiHwoDSUNOEgoyMDI2LTEyLTE0GgNUUEUqAk9aMgM3MTMoAGoHCAESA0lDTnIHCAESA1RQRUABSAFwAYIBCwj___________8BmAEB&tfu=CmxDalJJVmpCMVkwbzVZVUZXVEc5QlRHZGxaR2RDUnkwdExTMHRMUzB0ZEdKaloyRXhNRUZCUVVGQlIzSlZUVGhqU1cxSFRGVkJFZ1ZQV2pjeE14b0tDUDlwRUFBYUExUlhSRGdjY016R0FnPT0SAggAIgMSATE&hl=en&gl=TW&curr=TWD",
+      "retrieved_at": "2026-10-18T02:49:49.839Z",
+      "retrieved_at_taipei": "2026-10-18T10:49:49.839000+08:00",
+      "refs": [
+        38,
+        9
+      ],
+      "evidence": "docs/price-evidence/flight-b-afternoon-return.txt",
+      "source_id": 38,
+      "bag_weight_policy_kg": 23,
+      "bag_weight_scope": "23 kg 為韓亞非美線一般經濟艙規則，並非票種或雪具條款復價確認"
+    },
+    {
+      "id": "b-early-return",
+      "outbound_date": "2026-12-10",
+      "return_date": "2026-12-14",
+      "route": "TPE–ICN / ICN–TPE",
+      "carrier": "Asiana Airlines",
+      "outbound_local": "17:05–20:30",
+      "return_local": "08:00–09:50",
+      "adult_count": 1,
+      "cabin": "Economy",
+      "nonstop_both": true,
+      "currency": "TWD",
+      "observed_total": 10124,
+      "first_checked_bag_free_entire_trip": true,
+      "status": "observed_not_carrier_repriced",
+      "carrier_reprice_status": "not independently repriced",
+      "source_url": "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI2LTEyLTEwIh8KA1RQRRIKMjAyNi0xMi0xMBoDSUNOKgJPWjIDNzE0agcIARIDVFBFcgcIARIDSUNOGkESCjIwMjYtMTItMTQiHwoDSUNOEgoyMDI2LTEyLTE0GgNUUEUqAk9aMgM3MTEoAGoHCAESA0lDTnIHCAESA1RQRUABSAFwAYIBCwj___________8BmAEB&tfu=CmxDalJJV1V3eVprVTJNMlpsV0RCQlMyMUxTV2RDUnkwdExTMHRMUzB0ZEd4aVpIZ3hOMEZCUVVGQlIzSlZUa2RuVDBKdU55MUJFZ2RQV2pjeE1TTXhHZ29JakU4UUFCb0RWRmRFT0J4dzIvTUISAggAIgA&hl=en&gl=TW&curr=TWD",
+      "retrieved_at": "2026-10-18T02:52:30.577Z",
+      "retrieved_at_taipei": "2026-10-18T10:52:30.577000+08:00",
+      "refs": [
+        39,
+        9
+      ],
+      "evidence": "docs/price-evidence/flight-b-early-return.txt",
+      "source_id": 39,
+      "bag_weight_policy_kg": 23,
+      "bag_weight_scope": "23 kg 為韓亞非美線一般經濟艙規則，並非票種或雪具條款復價確認"
+    }
+  ],
+  "officialChecks": [
+    {
+      "id": "official-1",
+      "carrier": "EVA Air",
+      "outbound_date": "2026-12-03",
+      "return_date": "2026-12-07",
+      "status": "blocked",
+      "total_amount": null,
+      "reason": "Access Denied；未取得指定日期來回含稅與票種行李總價",
+      "source_url": "https://booking.evaair.com/flyeva/eva/b2c/booking-online.aspx?lang=zh-tw",
+      "refs": [
+        49
+      ],
+      "evidence": "docs/price-evidence/official-fare-1.txt",
+      "retrieved_at": "2026-10-18T10:43:11.894000+08:00",
+      "references": []
+    },
+    {
+      "id": "official-2",
+      "carrier": "EVA Air",
+      "outbound_date": "2026-12-10",
+      "return_date": "2026-12-14",
+      "status": "blocked",
+      "total_amount": null,
+      "reason": "Access Denied；未取得指定日期來回含稅與票種行李總價",
+      "source_url": "https://booking.evaair.com/flyeva/eva/b2c/booking-online.aspx?lang=zh-tw",
+      "refs": [
+        49
+      ],
+      "evidence": "docs/price-evidence/official-fare-2.txt",
+      "retrieved_at": "2026-10-18T10:43:11.894000+08:00",
+      "references": []
+    },
+    {
+      "id": "official-3",
+      "carrier": "China Airlines",
+      "outbound_date": "2026-12-03",
+      "return_date": "2026-12-07",
+      "status": "partial",
+      "total_amount": null,
+      "reason": "Access Denied；未取得指定日期來回含稅與票種行李總價",
+      "source_url": "https://flights.china-airlines.com/en-tw/flights-from-taipei-to-seoul",
+      "refs": [
+        50
+      ],
+      "evidence": "docs/price-evidence/official-fare-3.txt",
+      "retrieved_at": "2026-10-18T10:44:59.717000+08:00",
+      "references": [
+        {
+          "outbound_date": "2026-12-03",
+          "return_date": "2026-12-06",
+          "is_exact_quote": false,
+          "status": "excluded_wrong_return_date"
+        }
+      ]
+    },
+    {
+      "id": "official-4",
+      "carrier": "China Airlines",
+      "outbound_date": "2026-12-10",
+      "return_date": "2026-12-14",
+      "status": "partial",
+      "total_amount": null,
+      "reason": "Access Denied；未取得指定日期來回含稅與票種行李總價",
+      "source_url": "https://flights.china-airlines.com/en-tw/flights-from-taipei-to-seoul",
+      "refs": [
+        50
+      ],
+      "evidence": "docs/price-evidence/official-fare-4.txt",
+      "retrieved_at": "2026-10-18T10:46:51.035000+08:00",
+      "references": [
+        {
+          "outbound_date": "2026-12-10",
+          "return_date": "2026-12-16",
+          "is_exact_quote": false,
+          "status": "excluded_wrong_return_date"
+        }
+      ]
+    }
+  ],
+  "differences_twd": {
+    "b_afternoon_minus_a_afternoon": 3831,
+    "b_early_minus_a_afternoon": 388,
+    "b_afternoon_minus_b_early": 3443
+  },
+  "sources": [
+    {
+      "id": 40,
+      "title": "Toyoko Inn Seoul Dongdaemun No.1｜2026-12-03–2026-12-07 官網觀察",
+      "url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00208&start=2026-12-03&end=2026-12-07&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "note": "2026-10-18 指定日期查核快照；價格與空房會變，限制見對應卡片。"
+    },
+    {
+      "id": 41,
+      "title": "Toyoko Inn Seoul Dongdaemun No.1｜2026-12-10–2026-12-14 官網觀察",
+      "url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00208&start=2026-12-10&end=2026-12-14&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "note": "2026-10-18 指定日期查核快照；價格與空房會變，限制見對應卡片。"
+    },
+    {
+      "id": 42,
+      "title": "Toyoko Inn Seoul Dongdaemun No.2｜2026-12-03–2026-12-07 官網觀察",
+      "url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00291&start=2026-12-03&end=2026-12-07&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "note": "2026-10-18 指定日期查核快照；價格與空房會變，限制見對應卡片。"
+    },
+    {
+      "id": 43,
+      "title": "Toyoko Inn Seoul Dongdaemun No.2｜2026-12-10–2026-12-14 官網觀察",
+      "url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00291&start=2026-12-10&end=2026-12-14&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "note": "2026-10-18 指定日期查核快照；價格與空房會變，限制見對應卡片。"
+    },
+    {
+      "id": 44,
+      "title": "Travelodge Dongdaemun Seoul｜2026-12-03–2026-12-07 官網觀察",
+      "url": "https://booking.travelodgehotels.asia/ibe/details.aspx?hotelID=16811&lang=en-us&rmID=83881&voucher=&currID=79&access=",
+      "note": "2026-10-18 指定日期查核快照；價格與空房會變，限制見對應卡片。"
+    },
+    {
+      "id": 45,
+      "title": "Travelodge Dongdaemun Seoul｜2026-12-03 日期搜尋入口",
+      "url": "https://booking.travelodgehotels.asia/ibe/index.aspx?langid=1&adults=1&nights=4&rooms=1&propertyid=16811&checkin=12/03/2026&checkout=12/07/2026",
+      "note": "2026-10-18 指定日期查核快照；價格與空房會變，限制見對應卡片。"
+    },
+    {
+      "id": 46,
+      "title": "Travelodge Dongdaemun Seoul｜2026-12-10–2026-12-14 官網觀察",
+      "url": "https://booking.travelodgehotels.asia/ibe/details.aspx?hotelID=16811&lang=en-us&rmID=84593&voucher=&currID=79&access=",
+      "note": "2026-10-18 指定日期查核快照；價格與空房會變，限制見對應卡片。"
+    },
+    {
+      "id": 47,
+      "title": "Travelodge Dongdaemun Seoul｜2026-12-10 日期搜尋入口",
+      "url": "https://booking.travelodgehotels.asia/ibe/index.aspx?langid=1&adults=1&nights=4&rooms=1&propertyid=16811&checkin=12/10/2026&checkout=12/14/2026",
+      "note": "2026-10-18 指定日期查核快照；價格與空房會變，限制見對應卡片。"
+    },
+    {
+      "id": 48,
+      "title": "Xe｜KRW→TWD 共同比較參考匯率（非結帳匯率）",
+      "url": "https://www.xe.com/currencyconverter/convert/?Amount=1&From=KRW&To=TWD",
+      "note": "2026-10-18 查核快照；價格／空房可能改變，限制與時間見對應卡片。"
+    },
+    {
+      "id": 37,
+      "title": "Google Flights｜韓亞 2026-12-03–2026-12-07 13:50–15:55 觀察報價",
+      "url": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpBEgoyMDI2LTEyLTAzIh8KA1RQRRIKMjAyNi0xMi0wMxoDSUNOKgJPWjIDNzE0KABqBwgBEgNUUEVyBwgBEgNJQ04aQRIKMjAyNi0xMi0wNyIfCgNJQ04SCjIwMjYtMTItMDcaA1RQRSoCT1oyAzcxMygAagcIARIDSUNOcgcIARIDVFBFQAFIAXABggELCP___________wGYAQE&tfu=CmxDalJJUlZvelIyeEpYMVY0VVhkQlMwSTRTMEZDUnkwdExTMHRMUzB0ZEd4aVlYa3lOVUZCUVVGQlIzSlZUWHBaU21Jd2FVRkJFZ2RQV2pjeE15TXhHZ29JaUV3UUFCb0RWRmRFT0J4d3NPb0ISAggAIgA&hl=en&gl=TW&curr=TWD",
+      "note": "2026-10-18 指定日期查核快照；價格與空房會變，限制見對應卡片。"
+    },
+    {
+      "id": 38,
+      "title": "Google Flights｜韓亞 2026-12-10–2026-12-14 13:50–15:55 觀察報價",
+      "url": "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI2LTEyLTEwIh8KA1RQRRIKMjAyNi0xMi0xMBoDSUNOKgJPWjIDNzE0agcIARIDVFBFcgcIARIDSUNOGkESCjIwMjYtMTItMTQiHwoDSUNOEgoyMDI2LTEyLTE0GgNUUEUqAk9aMgM3MTMoAGoHCAESA0lDTnIHCAESA1RQRUABSAFwAYIBCwj___________8BmAEB&tfu=CmxDalJJVmpCMVkwbzVZVUZXVEc5QlRHZGxaR2RDUnkwdExTMHRMUzB0ZEdKaloyRXhNRUZCUVVGQlIzSlZUVGhqU1cxSFRGVkJFZ1ZQV2pjeE14b0tDUDlwRUFBYUExUlhSRGdjY016R0FnPT0SAggAIgMSATE&hl=en&gl=TW&curr=TWD",
+      "note": "2026-10-18 指定日期查核快照；價格與空房會變，限制見對應卡片。"
+    },
+    {
+      "id": 39,
+      "title": "Google Flights｜韓亞 2026-12-10–2026-12-14 08:00–09:50 觀察報價",
+      "url": "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI2LTEyLTEwIh8KA1RQRRIKMjAyNi0xMi0xMBoDSUNOKgJPWjIDNzE0agcIARIDVFBFcgcIARIDSUNOGkESCjIwMjYtMTItMTQiHwoDSUNOEgoyMDI2LTEyLTE0GgNUUEUqAk9aMgM3MTEoAGoHCAESA0lDTnIHCAESA1RQRUABSAFwAYIBCwj___________8BmAEB&tfu=CmxDalJJV1V3eVprVTJNMlpsV0RCQlMyMUxTV2RDUnkwdExTMHRMUzB0ZEd4aVpIZ3hOMEZCUVVGQlIzSlZUa2RuVDBKdU55MUJFZ2RQV2pjeE1TTXhHZ29JakU4UUFCb0RWRmRFT0J4dzIvTUISAggAIgA&hl=en&gl=TW&curr=TWD",
+      "note": "2026-10-18 指定日期查核快照；價格與空房會變，限制見對應卡片。"
+    },
+    {
+      "id": 49,
+      "title": "EVA Air｜官方查票入口（指定日期總價未取得）",
+      "url": "https://booking.evaair.com/flyeva/eva/b2c/booking-online.aspx?lang=zh-tw",
+      "note": "2026-10-18 指定日期查核快照；價格與空房會變，限制見對應卡片。"
+    },
+    {
+      "id": 50,
+      "title": "China Airlines｜官方查票入口（指定日期總價未取得）",
+      "url": "https://flights.china-airlines.com/en-tw/flights-from-taipei-to-seoul",
+      "note": "2026-10-18 指定日期查核快照；價格與空房會變，限制見對應卡片。"
+    },
+    {
+      "id": 51,
+      "title": "飯店官方身分／地址｜Hotel Venue G",
+      "url": "https://www.hotelvenueg.co.kr/",
+      "note": "2026-10-18 查核快照；價格／空房可能改變，限制與時間見對應卡片。"
+    },
+    {
+      "id": 52,
+      "title": "飯店官方身分／地址｜Toyoko Inn Seoul Yeongdeungpo",
+      "url": "https://www.toyoko-inn.com/eng/search/detail/00311/",
+      "note": "2026-10-18 查核快照；價格／空房可能改變，限制與時間見對應卡片。"
+    },
+    {
+      "id": 53,
+      "title": "Hotel Venue G (Hotel Venue-G Seoul)｜2026-12-03–2026-12-07 官網查核",
+      "url": "https://bw.tripla.ai/booking/result?code=019b20a6-86ed-7b58-af35-81e2de80c0ea&checkin=2026%2F12%2F03&checkout=2026%2F12%2F07&type=rooms&is_day_use=false&order=price_low_to_high&is_including_occupied=false&rooms=%5B%7B%22adults%22%3A1%7D%5D&parentUrl=https%3A%2F%2Fwww.hotelvenueg.co.kr&parentPathname=%2F&locale=en",
+      "note": "2026-10-18 查核快照；價格／空房可能改變，限制與時間見對應卡片。"
+    },
+    {
+      "id": 54,
+      "title": "Hotel Venue G (Hotel Venue-G Seoul)｜2026-12-10–2026-12-14 官網查核",
+      "url": "https://bw.tripla.ai/booking/result?code=019b20a6-86ed-7b58-af35-81e2de80c0ea&checkin=2026%2F12%2F10&checkout=2026%2F12%2F14&type=rooms&is_day_use=false&order=price_low_to_high&is_including_occupied=false&rooms=%5B%7B%22adults%22%3A1%7D%5D&parentUrl=https%3A%2F%2Fwww.hotelvenueg.co.kr&parentPathname=%2F&locale=en",
+      "note": "2026-10-18 查核快照；價格／空房可能改變，限制與時間見對應卡片。"
+    },
+    {
+      "id": 55,
+      "title": "Toyoko Inn Seoul Yeongdeungpo｜2026-12-03–2026-12-07 官網查核",
+      "url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00311&start=2026-12-03&end=2026-12-07&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "note": "2026-10-18 查核快照；價格／空房可能改變，限制與時間見對應卡片。"
+    },
+    {
+      "id": 56,
+      "title": "Toyoko Inn Seoul Yeongdeungpo｜2026-12-10–2026-12-14 官網查核",
+      "url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00311&start=2026-12-10&end=2026-12-14&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "note": "2026-10-18 查核快照；價格／空房可能改變，限制與時間見對應卡片。"
+    }
+  ],
+  "revised_at": "2026-10-18T11:59:21.228799+08:00",
+  "revision_reason": "補齊兩家替代飯店四筆查核，統一較新參考匯率；未提高預算，未變更住宿錨點。"
+}

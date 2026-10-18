@@ -1,0 +1,41 @@
+Creator: Hermes Agent
+Version: 1.0
+Purpose: dated read-only hotel rate evidence; no booking made
+Retrieved: 2026-10-18T02:45:36.438Z
+Source: https://booking.travelodgehotels.asia/ibe/details.aspx?hotelID=16811&lang=en-us&rmID=83881&voucher=&currID=79&access=
+Observed conditions: 2026-12-03 to 2026-12-07, 1 adult, 1 room, 4 nights
+
+Provider text (verbatim excerpt):
+Early Bird
+
+235,000 KRW 148,990
+Excluding Taxes & Fees
+
+
+BOOK NOW
+
+Summary
+Pricing Details
+Amount
+
+Thursday DEC 3, 2026	KRW 235,000
+You save KRW 53,070	KRW 91,930
+Friday DEC 4, 2026	KRW 235,000
+You save KRW 115,290	KRW 199,710
+Saturday DEC 5, 2026	KRW 235,000
+You save KRW 122,610	KRW 212,390
+Sunday DEC 6, 2026	KRW 235,000
+You save KRW 53,070	KRW 91,930
+Taxes & Fees	KRW 59,596
+TOTAL	KRW 655,556
+Description
+
+Book 30 days in advance to enjoy extra savings with the comfort of flexible modification policy
+
+Guarantee Policy
+
+Reservation must be guaranteed with a valid credit card. Credit Card must be presented upon check in for verification purpose.
+
+Cancellation Policy
+
+Reservation must be modified or cancelled at least 72 hours prior to arrival by local time 6pm to avoid 1 night penalty.

@@ -1,10 +1,10 @@
 # 首爾，一個人剛剛好
 
 - 建立者：豪斯的 Hermes Agent
-- 版次：v2.0
+- 版次：v2.1
 - 建立日期：2026-10-10
-- 修訂日期：2026-10-16（Asia/Taipei）
-- 來源／目的：豪斯的首爾 2026 年 12 月五天四夜獨旅規劃；依「全站重新整理、再做兩輪優化與驗證」重建。
+- 修訂日期：2026-10-18（Asia/Taipei）
+- 來源／目的：豪斯的首爾 2026 年 12 月五天四夜獨旅規劃；承接 v2.0 兩輪重整，補上指定日期價格證據、預算缺口與官方查詢阻塞。
 
 **固定網站：** https://houseyen.github.io/seoul-dec-2026-trip/
 
@@ -15,14 +15,14 @@
 行程總覽、地圖導航、吃買清單、飯店住宿、機票比價、待辦清單。沒有換 repo 或建立第二個正式入口。
 
 - 兩組候選日期：2026/12/3–7、12/10–14；1 成人、TPE ⇄ ICN、五天四夜。
-- 飯店目標逐晚含稅 ≤ NT$3,000，僅列正式飯店候選；指定日期房價及空房未核實。
-- 機票提供兩組日期條件卡、一鍵複製與手動查價入口；外部實測舊 Google Flights 日期深連結未套用，已撤下，不假裝有預填或報價。
+- 飯店目標逐晚含稅 ≤ NT$3,000；原三家及兩家替代×兩組共10筆已查，東橫三個分店的官網未提供可用房價、Travelodge與Venue G所見方案超標。Venue G逐晚拆價未取得，不自行攤分。仍無已核實的預算內方案，也不宣稱全首爾售罄。
+- 機票保留兩組日期條件卡與一鍵複製，新增3筆韓亞選定去回航班的 Google Flights 訂票選項觀察價。長榮／華航官方4筆查詢受阻；韓亞官網最後復價未確認，不能叫已完成航空官網同條件比價。
 - 每天一條主線，加選可刪；雪具店是零售，不是滑雪場或租借。
 - Google Maps 每段獨立起終點、步行／大眾運輸連結；不把多站 transit 連結當完整行程。
 
 ## 原始碼與保留舊版
 
-`index.html`、`styles.css`、`trip-data.js`、`app.js` 是無建置、零執行期套件的靜態網站。資料來源和查核限制在網站頁尾、`docs/content-review.md`。公開資料不得放入護照、訂位碼、token、私人訂單。
+`index.html`、`styles.css`、`trip-data.js`、`price-data.js`、`app.js` 是零執行期套件的靜態網站。`docs/price-audit.json` 是價格來源資料；修改後以 `npm run build:prices` 重新生成並提交 `price-data.js`，正式站不需動態建置或呼叫訂房／訂票API。資料來源和查核限制在網站頁尾、`docs/content-review.md`；逐筆公開摘錄在 `docs/price-evidence/`。公開資料不得放入護照、訂位碼、token、私人訂單或研究用瀏覽器追蹤ID。
 
 舊版 v1.13 的完整 commit：`daee29813388cf15227601c8c97643c84731894e`。本機另有 `archive/v1.13-before-rebuild` 分支；原始 Git 歷史不改寫、不 force push。
 
@@ -32,6 +32,7 @@
 
 ```sh
 npm ci
+npm run build:prices
 npm run check
 npm test
 ```
@@ -45,6 +46,14 @@ TRIP_BASE_URL=https://houseyen.github.io/seoul-dec-2026-trip/ npm test
 ```
 
 部分測試會在獨立瀏覽器 localStorage 建立測試勾選，及下載／匯入本機測試 JSON；不訂票、不訂房、不對外發訊息。
+
+## v2.1 指定日期價格查核
+
+- [當次價格、預算缺口與本機QA](docs/price-audit-report.md)
+- [逐筆公開研究資料](docs/price-audit.json)、[公開查核摘錄](docs/price-evidence/)
+- [機械產生的本機QA](docs/qa/price-update-local.json)
+- `docs/content-review.md` 與原兩輪QA是v2.0歷史快照，價格進展以v2.1報告與頁面各筆查核時間為準。
+- 本機測試、遠端部署、Telegram送達與價格條件達標分開核對；測試通過不等於訂位或價格承諾。
 
 ## 本機資料與備份
 

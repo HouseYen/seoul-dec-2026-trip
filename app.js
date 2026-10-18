@@ -1,11 +1,12 @@
 'use strict';
 (() => {
   const data = window.TRIP_DATA;
+  const prices = window.TRIP_PRICES;
   const byId = id => document.getElementById(id);
   const all = selector => Array.from(document.querySelectorAll(selector));
   const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
   const external = 'target="_blank" rel="noopener noreferrer"';
-  const sourceById = new Map(data.sources.map(source => [source.id, source]));
+  const sourceById = new Map([...data.sources, ...prices.sources].map(source => [source.id, source]));
   const todoKey = 'seoul-trip-todos-v1';
   const preferencesKey = 'seoul-trip-preferences-v2';
   const tabs = ['itinerary', 'map', 'places', 'hotels', 'flights', 'todos'];
@@ -87,20 +88,52 @@
   }
   function renderHotels() {
     byId('hotel-total-cap').textContent = 'NT$' + (data.hotelNightCap * data.nights).toLocaleString('en-US');
-    byId('hotel-cards').innerHTML = data.hotels.map(hotel => `<article class="card hotel-card"><span class="card-kicker">${escapeHTML(hotel.tag)}</span><h3>${escapeHTML(hotel.title)}</h3><p>${escapeHTML(hotel.text)}${cite(hotel.refs)}</p><p class="address">${escapeHTML(hotel.address)}</p><p class="card-note"><strong>兩組日期房價／空房：未核實</strong></p><div class="card-links"><a href="${escapeHTML(sourceById.get(hotel.refs[0]).url)}" ${external}>官方查房型／房價 ↗</a><a href="${searchURL(hotel.query)}" ${external}>Google Maps ↗</a></div></article>`).join('');
+    byId('hotel-cards').innerHTML = data.hotels.map(hotel => `<article class="card hotel-card"><span class="card-kicker">${escapeHTML(hotel.tag)}</span><h3>${escapeHTML(hotel.title)}</h3><p>${escapeHTML(hotel.text)}${cite(hotel.refs)}</p><p class="address">${escapeHTML(hotel.address)}</p><p class="card-note"><strong>飯店介紹不等於預算推薦；指定日期結果見下方查核。</strong></p><div class="card-links"><a href="${escapeHTML(sourceById.get(hotel.refs[0]).url)}" ${external}>官方查房型／房價 ↗</a><a href="${searchURL(hotel.query)}" ${external}>Google Maps ↗</a></div></article>`).join('');
   }
   function renderFlights() {
     byId('flight-cards').innerHTML = data.dateOptions.map((start, i) => {
       const end = dateFor(data.daysCount, start).toISOString().slice(0, 10);
       const href = 'https://www.google.com/travel/flights?hl=zh-TW&gl=TW&curr=TWD';
-      return `<article class="card"><span class="card-kicker">日期方案 ${i + 1}／未訂位</span><h3 class="flight-dates">${formatDate(dateFor(1, start))}–${formatDate(dateFor(data.daysCount, start))}</h3><ul class="flight-facts"><li>TPE → ICN／ICN → TPE</li><li>5 個日曆日・4 晚・跨週末</li><li>1 成人・經濟艙・直飛</li><li>同條件含稅＋兩段托運總價：待查</li></ul><button class="button primary" type="button" data-copy-flight="${start}">複製這組查票條件</button><div class="card-links"><a data-flight-search data-departure="${start}" data-return="${end}" href="${escapeHTML(href)}" ${external}>開啟 Google Flights（手動填條件）↗</a></div><p class="fineprint">舊日期深連結本次未套用，已移除。請複製條件後手動輸入；這不是報價或保留座位。</p></article>`;
+      return `<article class="card"><span class="card-kicker">日期方案 ${i + 1}／未訂位</span><h3 class="flight-dates">${formatDate(dateFor(1, start))}–${formatDate(dateFor(data.daysCount, start))}</h3><ul class="flight-facts"><li>TPE → ICN／ICN → TPE</li><li>5 個日曆日・4 晚・跨週末</li><li>1 成人・經濟艙・直飛</li><li>比較基準：去回各至少 20 kg 托運（規劃假設）</li><li>航空官網最後復價與票種條款：待確認</li></ul><button class="button primary" type="button" data-copy-flight="${start}">複製這組查票條件</button><div class="card-links"><a data-flight-search data-departure="${start}" data-return="${end}" href="${escapeHTML(href)}" ${external}>開啟 Google Flights（手動填條件）↗</a></div><p class="fineprint">上方為手動查詢入口，不預填日期；下方觀察價另有已選定去回航班的來源。都不代表保留座位。</p></article>`;
     }).join('');
     byId('asiana-citation').innerHTML = cite([9]);
+  }
+  function money(amount, currency = 'TWD') {
+    return Number.isFinite(amount) ? (currency === 'TWD' ? 'NT$' : currency + ' ') + amount.toLocaleString('en-US', { maximumFractionDigits: 2 }) : '未取得';
+  }
+  function quoteDate(start, end) { return `${formatDate(dateFor(1, start))}–${formatDate(dateFor(1, end))}`; }
+  function observedAt(value) {
+    return new Date(value).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei', hour12: false });
+  }
+  function renderPrices() {
+    const visibleHotels = prices.hotels.filter(item => !preferences.date || item.checkin === preferences.date);
+    const visibleFlights = prices.flights.filter(item => !preferences.date || item.outbound_date === preferences.date);
+    const visibleOfficial = prices.officialChecks.filter(item => !preferences.date || item.outbound_date === preferences.date);
+    const unknown = prices.hotels.filter(item => item.budget_state === 'unknown').length;
+    const over = prices.hotels.filter(item => item.budget_state.startsWith('over-cap')).length;
+    const within = prices.hotels.filter(item => item.budget_state === 'within-cap-estimate').length;
+    byId('hotel-price-status').innerHTML = `<strong>${within ? '有依參考匯率落在預算內的觀察方案，仍須最後復核。' : '本次仍未核實到逐晚含稅合格的可訂房價。'}</strong> 已查 ${prices.hotels.length} 筆：${unknown} 筆未取得合格報價、${over} 筆所見價格超標、${within} 筆依參考匯率在上限內。不是所有通路售罄；未確認的房型與稅費不視為合格。`;
+    const filterText = preferences.date ? `目前顯示 ${quoteDate(preferences.date, dateFor(data.daysCount, preferences.date).toISOString().slice(0, 10))}；可用上方候選日期切換。` : '目前顯示兩組候選日期；上方選定日期可同步篩選飯店與機票觀察。';
+    byId('hotel-price-filter').textContent = filterText;
+    byId('flight-price-filter').textContent = filterText;
+    byId('hotel-rate-cards').innerHTML = visibleHotels.map(item => {
+      const nightly = item.nightly_amounts?.length ? `<ul class="rate-lines">${item.nightly_amounts.map(night => `<li>${escapeHTML(night.date)}：${money(night.amount, item.currency)}${item.currency === 'KRW' && Number.isFinite(night.amount) ? `（參考估值約 ${money(night.amount * prices.exchangeRate.twd_per_krw)}）` : ''}</li>`).join('')}</ul>` : '';
+      const tax = Number.isFinite(item.taxes_and_fees_total) ? `<p>四晚另列總稅費：${money(item.taxes_and_fees_total, item.currency)}（已計入下方總額）</p>` : '';
+      const estimate = Number.isFinite(item.estimated_total_twd) ? `<p>四晚參考估值：約 ${money(item.estimated_total_twd)}（不是台幣結帳價）</p>` : '';
+      const label = item.budget_state.startsWith('over-cap') ? '超標／不列預算推薦' : item.budget_state === 'within-cap-estimate' ? '依參考匯率在上限內／待復核' : '未取得合格報價／不能判定達標';
+      return `<article class="card" data-hotel-rate="${escapeHTML(item.id)}" data-hotel-origin="${escapeHTML(item.origin)}"><span class="card-kicker">${escapeHTML(quoteDate(item.checkin, item.checkout))}</span><h4>${escapeHTML(item.hotel)}</h4>${item.location_note ? `<p>${escapeHTML(item.location_note)}</p>` : ''}<p data-budget-state="${escapeHTML(item.budget_state)}"><strong>${label}</strong></p><p>${escapeHTML(item.budget_note)}</p><p>房型：${escapeHTML(item.room_type || '未取得指定日期房型')}；1 成人・1 房・4 晚</p>${item.rate_name ? `<p>方案：${escapeHTML(item.rate_name)}</p>` : ''}${nightly}<p>${escapeHTML(item.tax_scope)}</p>${tax}<p data-hotel-total><strong>四晚所見總額：${money(item.total_amount, item.currency)}</strong></p>${estimate}<p>取消條款：${escapeHTML(item.cancellation)}</p><p class="fineprint">查核：${escapeHTML(observedAt(item.retrieved_at))} 台北時間。${cite(item.refs)}</p><div class="card-links"><a href="${escapeHTML(item.source_url)}" ${external}>重新查此日期／條件需核對 ↗</a><a href="${escapeHTML(item.evidence)}" ${external}>當次查核摘錄 ↗</a></div></article>`;
+    }).join('');
+    byId('hotel-fx-note').innerHTML = `所有 KRW 估值統一使用 Xe 參考匯率：1 KRW = ${prices.exchangeRate.twd_per_krw} TWD；來源時間 ${escapeHTML(prices.exchangeRate.source_as_of)}。換算更新不代表飯店已再次復價，也不是刷卡匯率；銀行、付款及其他現場費用需另核。${cite([prices.exchangeRate.source_id])}`;
+    const first = prices.flights.find(item => item.id === 'a-afternoon-return');
+    const second = prices.flights.find(item => item.id === 'b-afternoon-return');
+    byId('flight-price-summary').innerHTML = `<strong>這批已觀察行程，先看 12/3–7 晚去午回。</strong> 韓亞 17:05 去／13:50 回的來回觀察價 ${money(first.observed_total)}，比下一週相同起降時段少 ${money(prices.differences_twd.b_afternoon_minus_a_afternoon)}。${cite([first.source_id, second.source_id])}這是兩組日期的觀察差額，不是航空官網保價，也未包含尚未合格的住宿成本。`;
+    byId('flight-quote-cards').innerHTML = visibleFlights.map(item => `<article class="card" data-flight-quote="${escapeHTML(item.id)}"><span class="card-kicker">已觀察／官網未復價</span><h4>${escapeHTML(quoteDate(item.outbound_date, item.return_date))}</h4><p class="quote-price" data-quote-price>${money(item.observed_total, item.currency)}</p><p>每人來回觀察價・韓亞・1 成人經濟艙・TPE ⇄ ICN・兩段直飛</p><ul class="rate-lines"><li>去程 ${escapeHTML(item.outbound_local)}</li><li>回程 ${escapeHTML(item.return_local)}</li><li>時間為各機場當地時間</li><li>行程頁標示兩段首件托運免費</li></ul><p>重量另依一般非美線規則為 23 kg；所選票種、雪具及最後稅費／付款費仍未復價。${cite(item.refs)}</p><p class="fineprint">觀察：${escapeHTML(observedAt(item.retrieved_at))} 台北時間；不是已訂位或保證可成交價格。</p><div class="card-links"><a data-price-source href="${escapeHTML(item.source_url)}" ${external}>查看選定去回行程來源 ↗</a><a href="${escapeHTML(item.evidence)}" ${external}>當次查核摘錄 ↗</a></div></article>`).join('');
+    byId('airline-check-cards').innerHTML = visibleOfficial.map(item => `<article class="card" data-airline-check="${escapeHTML(item.id)}"><span class="card-kicker">${escapeHTML(item.carrier)}／官方引擎查核</span><h4>${escapeHTML(quoteDate(item.outbound_date, item.return_date))}</h4><p>${escapeHTML(item.reason)}</p>${item.references.length ? '<p>官方日曆的範例返程日期不符，已排除，不挪用作這組報價。</p>' : ''}<p class="fineprint">查核：${escapeHTML(observedAt(item.retrieved_at))} 台北時間。</p><div class="card-links"><a href="${escapeHTML(item.source_url)}" ${external}>官方手動查票入口 ↗</a><a href="${escapeHTML(item.evidence)}" ${external}>阻塞紀錄 ↗</a></div></article>`).join('');
   }
   async function copyFlightQuery(start) {
     if (!data.dateOptions.includes(start)) return;
     const end = dateFor(data.daysCount, start).toISOString().slice(0, 10);
-    const text = `去程 TPE→ICN ${start}；回程 ICN→TPE ${end}；1 成人、經濟艙、來回直飛、TWD。比較含稅及去回兩段托運後總價。`;
+    const text = `去程 TPE→ICN ${start}；回程 ICN→TPE ${end}；1 成人、經濟艙、來回直飛、TWD。比較含稅及去回兩段托運後總價；比較基準為每段至少 20 kg 托運（規劃假設），另核票種與雪具規則。`;
     try {
       if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
       await navigator.clipboard.writeText(text); notify('已複製這組查票條件；請到 Google Flights 或航空官網手動輸入');
@@ -206,11 +239,11 @@
     if (updateHash) { syncRouteHash(); byId('main-content').scrollIntoView({ block: 'start', behavior: 'instant' }); }
   }
   function renderSources() {
-    byId('source-list').innerHTML = data.sources.map(source => `<li id="source-${source.id}" value="${source.id}" tabindex="-1"><a href="${escapeHTML(source.url)}" ${external}>${escapeHTML(source.title)}</a><small>${escapeHTML(source.note)}</small></li>`).join('');
+    byId('source-list').innerHTML = [...sourceById.values()].sort((a, b) => a.id - b.id).map(source => `<li id="source-${source.id}" value="${source.id}" tabindex="-1"><a href="${escapeHTML(source.url)}" ${external}>${escapeHTML(source.title)}</a><small>${escapeHTML(source.note)}</small></li>`).join('');
   }
   byId('date-option').value = preferences.date;
   byId('stay-area').value = preferences.base;
-  byId('date-option').addEventListener('change', event => { preferences.date = event.target.value; saveJSON(preferencesKey, preferences); renderDays(); if (activeTab === 'map') renderMap(); });
+  byId('date-option').addEventListener('change', event => { preferences.date = event.target.value; saveJSON(preferencesKey, preferences); renderDays(); renderPrices(); if (activeTab === 'map') renderMap(); });
   byId('stay-area').addEventListener('change', event => { preferences.base = event.target.value; saveJSON(preferencesKey, preferences); renderDays(); if (activeTab === 'map') renderMap(); });
   byId('snow-plan').value = preferences.snow;
   byId('snow-plan').addEventListener('change', event => { preferences.snow = event.target.value; saveJSON(preferencesKey, preferences); renderDays(); if (activeTab === 'map') renderMap(); });
@@ -306,7 +339,7 @@
       preferences = { date: backup.preferences.date, base: backup.preferences.base, snow: backup.preferences.snow };
       saveJSON(todoKey, todos); saveJSON(preferencesKey, preferences);
       byId('date-option').value = preferences.date; byId('stay-area').value = preferences.base; byId('snow-plan').value = preferences.snow;
-      renderDays(); renderTodos(); if (activeTab === 'map') renderMap();
+      renderDays(); renderTodos(); renderPrices(); if (activeTab === 'map') renderMap();
       notify('已還原本機備份；不代表任何訂位已完成');
     } catch { notify('無法匯入：請選此網站匯出的有效 JSON 備份（最多 64 KB）；原勾選未變更'); }
     finally { event.target.value = ''; }
@@ -316,6 +349,6 @@
   window.addEventListener('afterprint', () => { byId('sources').open = previousSourcesOpen; });
   window.addEventListener('hashchange', applyRouteHash);
   window.addEventListener('popstate', applyRouteHash);
-  renderDays(); renderBackups(); renderPlaces(); renderHotels(); renderFlights(); renderTodos(); renderSources();
+  renderDays(); renderBackups(); renderPlaces(); renderHotels(); renderFlights(); renderPrices(); renderTodos(); renderSources();
   applyRouteHash();
 })();

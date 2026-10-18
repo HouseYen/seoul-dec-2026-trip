@@ -1,0 +1,8 @@
+Creator: Hermes Agent
+Version: 1.0
+Purpose: operator identity only, not date-specific rate
+Source: https://www.toyoko-inn.com/eng/search/detail/00311/
+
+Provider text:
+293, Singil-ro, Yeongdeungpo-gu, Seoul 07306 Republic of Korea
+Unit Bath

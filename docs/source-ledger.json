@@ -53,7 +53,13 @@
       "id": 9,
       "url": "https://flyasiana.com/C/US/EN/contents/free-baggage",
       "title": "",
-      "accessed": "2026-10-16"
+      "accessed": "2026-10-16",
+      "quotes": [
+        {
+          "text": "##### Non-U.S. Routes\n\n**Baggage Allowance for Non-U.S. Routes**\n\n   | Business Class  (Adult, Child\\*) | Economy Class  (Adult, Child\\*) | Infant |\n| 32 kg(70 lbs) 32 kg(70 lbs) Weight: not exceeding 32 kg (70 lbs)  Quantity allowed: 2 | 23 kg(50 lbs) Weight: not exceeding 23 kg (50 lbs)  Quantity allowed: 1 | 10 kg(22 lbs) Stroller Weight: not exceeding 10 kg (22 lbs)  Quantity allowed: 1 |\n\n* For children/infant, you may add one of the following: stroller, baby walker, car seat, or bassinet.\n* Business Class regulations apply to Business Suite",
+          "added": "2026-10-18"
+        }
+      ]
     },
     {
       "id": 10,
@@ -144,6 +150,310 @@
       "url": "https://english.visitkorea.or.kr/svc/contents/contentsView.do?vcontsId=91565",
       "title": "",
       "accessed": "2026-10-16"
+    },
+    {
+      "id": 25,
+      "url": "https://flights.evaair.com/en/flights-from-taipei-to-seoul",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 26,
+      "url": "https://flights.evaair.com/en/flights-from-seoul-to-taipei",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 27,
+      "url": "https://flights.evaair.com/en/flights-from-taipei-to-south-korea",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 28,
+      "url": "https://flights.evaair.com/en",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 29,
+      "url": "https://flights.evaair.com/en/flights-from-south-korea-to-taiwan",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 30,
+      "url": "https://flights.china-airlines.com/en-tw/flights-to-seoul",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 31,
+      "url": "https://www.china-airlines.com/us/en",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 32,
+      "url": "https://www.china-airlines.com/en-tw/flights-from-seoul-to-taiwan",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 33,
+      "url": "https://flights.china-airlines.com/en-us/flights-to-taipei",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 34,
+      "url": "https://booking.china-airlines.com/Flightschedule/?country=us&locale=en",
+      "title": "",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 35,
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI2LTEyLTAzagcIARIDVFBFcgcIARIDSUNOGh4SCjIwMjYtMTItMDdqBwgBEgNJQ05yBwgBEgNUUEVAAUgBcAGCAQsI____________AZgBAQ&hl=en&gl=TW&curr=TWD",
+      "title": "Google Flights 2026-12-03 to 2026-12-07 TPE-ICN rendered exact-date search",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 36,
+      "url": "https://www.google.com/travel/flights/search?tfs=CBwQAhoeEgoyMDI2LTEyLTEwagcIARIDVFBFcgcIARIDSUNOGh4SCjIwMjYtMTItMTRqBwgBEgNJQ05yBwgBEgNUUEVAAUgBcAGCAQsI____________AZgBAQ&tfu=EgYIABAAGAA&hl=en&gl=TW&curr=TWD",
+      "title": "Google Flights exact-date TPE-ICN 2026-12-10 to 2026-12-14",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 37,
+      "url": "https://www.google.com/travel/flights/booking?tfs=CBwQAhpBEgoyMDI2LTEyLTAzIh8KA1RQRRIKMjAyNi0xMi0wMxoDSUNOKgJPWjIDNzE0KABqBwgBEgNUUEVyBwgBEgNJQ04aQRIKMjAyNi0xMi0wNyIfCgNJQ04SCjIwMjYtMTItMDcaA1RQRSoCT1oyAzcxMygAagcIARIDSUNOcgcIARIDVFBFQAFIAXABggELCP___________wGYAQE&tfu=CmxDalJJUlZvelIyeEpYMVY0VVhkQlMwSTRTMEZDUnkwdExTMHRMUzB0ZEd4aVlYa3lOVUZCUVVGQlIzSlZUWHBaU21Jd2FVRkJFZ2RQV2pjeE15TXhHZ29JaUV3UUFCb0RWRmRFT0J4d3NPb0ISAggAIgA&hl=en&gl=TW&curr=TWD",
+      "title": "Google Flights selected Asiana itinerary 2026-12-03/2026-12-07 a-afternoon-return",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "1 free carry-on\n1st checked bag free\nBaggage conditions apply to your entire trip. Bag fees may be higher at the airport. Asiana Airlines bag policy, Korean Air bag policy",
+          "added": "2026-10-18"
+        },
+        {
+          "text": "Book with Asiana AirlinesAirline\nNT$9,736",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 38,
+      "url": "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI2LTEyLTEwIh8KA1RQRRIKMjAyNi0xMi0xMBoDSUNOKgJPWjIDNzE0agcIARIDVFBFcgcIARIDSUNOGkESCjIwMjYtMTItMTQiHwoDSUNOEgoyMDI2LTEyLTE0GgNUUEUqAk9aMgM3MTMoAGoHCAESA0lDTnIHCAESA1RQRUABSAFwAYIBCwj___________8BmAEB&tfu=CmxDalJJVmpCMVkwbzVZVUZXVEc5QlRHZGxaR2RDUnkwdExTMHRMUzB0ZEdKaloyRXhNRUZCUVVGQlIzSlZUVGhqU1cxSFRGVkJFZ1ZQV2pjeE14b0tDUDlwRUFBYUExUlhSRGdjY016R0FnPT0SAggAIgMSATE&hl=en&gl=TW&curr=TWD",
+      "title": "Google Flights selected Asiana itinerary 2026-12-10/2026-12-14 b-afternoon-return",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "1 free carry-on\n1st checked bag free\nBaggage conditions apply to your entire trip. Bag fees may be higher at the airport. Asiana Airlines bag policy, Korean Air bag policy",
+          "added": "2026-10-18"
+        },
+        {
+          "text": "Book with Asiana AirlinesAirline\nNT$13,567",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 39,
+      "url": "https://www.google.com/travel/flights/booking?tfs=CBwQAho_EgoyMDI2LTEyLTEwIh8KA1RQRRIKMjAyNi0xMi0xMBoDSUNOKgJPWjIDNzE0agcIARIDVFBFcgcIARIDSUNOGkESCjIwMjYtMTItMTQiHwoDSUNOEgoyMDI2LTEyLTE0GgNUUEUqAk9aMgM3MTEoAGoHCAESA0lDTnIHCAESA1RQRUABSAFwAYIBCwj___________8BmAEB&tfu=CmxDalJJV1V3eVprVTJNMlpsV0RCQlMyMUxTV2RDUnkwdExTMHRMUzB0ZEd4aVpIZ3hOMEZCUVVGQlIzSlZUa2RuVDBKdU55MUJFZ2RQV2pjeE1TTXhHZ29JakU4UUFCb0RWRmRFT0J4dzIvTUISAggAIgA&hl=en&gl=TW&curr=TWD",
+      "title": "Google Flights selected Asiana itinerary 2026-12-10/2026-12-14 b-early-return",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "1 free carry-on\n1st checked bag free\nBaggage conditions apply to your entire trip. Bag fees may be higher at the airport. Asiana Airlines bag policy, Korean Air bag policy",
+          "added": "2026-10-18"
+        },
+        {
+          "text": "Book with Asiana AirlinesAirline\nNT$10,124",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 40,
+      "url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00208&start=2026-12-03&end=2026-12-07&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "title": "Toyoko Inn Seoul Dongdaemun No.1｜2026-12-03–2026-12-07 官網觀察",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "There are no rooms available for Single.",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 41,
+      "url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00208&start=2026-12-10&end=2026-12-14&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "title": "Toyoko Inn Seoul Dongdaemun No.1｜2026-12-10–2026-12-14 官網觀察",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "There are no rooms available for Single.",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 42,
+      "url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00291&start=2026-12-03&end=2026-12-07&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "title": "Toyoko Inn Seoul Dongdaemun No.2｜2026-12-03–2026-12-07 官網觀察",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "There are no rooms available for Single.",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 43,
+      "url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00291&start=2026-12-10&end=2026-12-14&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "title": "Toyoko Inn Seoul Dongdaemun No.2｜2026-12-10–2026-12-14 官網觀察",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "There are no rooms available for Single.",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 44,
+      "url": "https://booking.travelodgehotels.asia/ibe/details.aspx?hotelID=16811&lang=en-us&rmID=83881&voucher=&currID=79&access=",
+      "title": "Travelodge Dongdaemun Seoul｜2026-12-03–2026-12-07 官網觀察",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "Early Bird\n\n235,000 KRW 148,990\nExcluding Taxes & Fees\n\n\nBOOK NOW\n\nSummary\nPricing Details\nAmount\n\nThursday DEC 3, 2026\tKRW 235,000\nYou save KRW 53,070\tKRW 91,930\nFriday DEC 4, 2026\tKRW 235,000\nYou save KRW 115,290\tKRW 199,710\nSaturday DEC 5, 2026\tKRW 235,000\nYou save KRW 122,610\tKRW 212,390\nSunday DEC 6, 2026\tKRW 235,000\nYou save KRW 53,070\tKRW 91,930\nTaxes & Fees\tKRW 59,596\nTOTAL\tKRW 655,556\nDescription\n\nBook 30 days in advance to enjoy extra savings with the comfort of flexible modification policy\n\nGuarantee Policy\n\nReservation must be guaranteed with a valid credit card. Credit Card must be presented upon check in for verification purpose.\n\nCancellation Policy\n\nReservation must be modified or cancelled at least 72 hours prior to arrival by local time 6pm to avoid 1 night penalty.",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 45,
+      "url": "https://booking.travelodgehotels.asia/ibe/index.aspx?langid=1&adults=1&nights=4&rooms=1&propertyid=16811&checkin=12/03/2026&checkout=12/07/2026",
+      "title": "Travelodge Dongdaemun Seoul｜2026-12-03 日期搜尋入口",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 46,
+      "url": "https://booking.travelodgehotels.asia/ibe/details.aspx?hotelID=16811&lang=en-us&rmID=84593&voucher=&currID=79&access=",
+      "title": "Travelodge Dongdaemun Seoul｜2026-12-10–2026-12-14 官網觀察",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "Early Bird\n\n202,500 KRW 128,385\nExcluding Taxes & Fees\n\n\nBOOK NOW\n\nSummary\nPricing Details\nAmount\n\nThursday DEC 10, 2026\tKRW 202,500\nYou save KRW 62,220\tKRW 107,780\nFriday DEC 11, 2026\tKRW 202,500\nYou save KRW 84,180\tKRW 145,820\nSaturday DEC 12, 2026\tKRW 202,500\nYou save KRW 102,480\tKRW 177,520\nSunday DEC 13, 2026\tKRW 202,500\nYou save KRW 47,580\tKRW 82,420\nTaxes & Fees\tKRW 51,354\nTOTAL\tKRW 564,894\nDescription\n\nBook 30 days in advance to enjoy extra savings with the comfort of flexible modification policy\n\nGuarantee Policy\n\nReservation must be guaranteed with a valid credit card. Credit Card must be presented upon check in for verification purpose.\n\nCancellation Policy\n\nReservation must be modified or cancelled at least 72 hours prior to arrival by local time 6pm to avoid 1 night penalty.",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 47,
+      "url": "https://booking.travelodgehotels.asia/ibe/index.aspx?langid=1&adults=1&nights=4&rooms=1&propertyid=16811&checkin=12/10/2026&checkout=12/14/2026",
+      "title": "Travelodge Dongdaemun Seoul｜2026-12-10 日期搜尋入口",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 48,
+      "url": "https://www.xe.com/currencyconverter/convert/?Amount=1&From=KRW&To=TWD",
+      "title": "Xe｜KRW→TWD 參考匯率（非結帳匯率）",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "1.00 KRW = 0.02436473 TWD",
+          "added": "2026-10-18"
+        },
+        {
+          "text": "1.00 KRW = 0.02433396 TWD",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 49,
+      "url": "https://booking.evaair.com/flyeva/eva/b2c/booking-online.aspx?lang=zh-tw",
+      "title": "EVA Air｜官方查票入口（指定日期總價未取得）",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 50,
+      "url": "https://flights.china-airlines.com/en-tw/flights-from-taipei-to-seoul",
+      "title": "China Airlines｜官方查票入口（指定日期總價未取得）",
+      "accessed": "2026-10-18"
+    },
+    {
+      "id": 51,
+      "url": "https://www.hotelvenueg.co.kr",
+      "title": "飯店官方身分／地址｜Hotel Venue G",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "Venue G 117, Cheonggyecheon-ro, Jongno-gu, Seoul, Republic of Korea",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 52,
+      "url": "https://www.toyoko-inn.com/eng/search/detail/00311",
+      "title": "飯店官方身分／地址｜Toyoko Inn Seoul Yeongdeungpo",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "293, Singil-ro, Yeongdeungpo-gu, Seoul 07306 Republic of Korea",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 53,
+      "url": "https://bw.tripla.ai/booking/result?code=019b20a6-86ed-7b58-af35-81e2de80c0ea&checkin=2026%2F12%2F03&checkout=2026%2F12%2F07&type=rooms&is_day_use=false&order=price_low_to_high&is_including_occupied=false&rooms=%5B%7B%22adults%22%3A1%7D%5D&parentUrl=https%3A%2F%2Fwww.hotelvenueg.co.kr&parentPathname=%2F&locale=en",
+      "title": "Hotel Venue G (Hotel Venue-G Seoul)｜2026-12-03–2026-12-07 官網查核",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "₩ 749,700 for 4 nights\n(Taxes and fees included)\nBook",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 54,
+      "url": "https://bw.tripla.ai/booking/result?code=019b20a6-86ed-7b58-af35-81e2de80c0ea&checkin=2026%2F12%2F10&checkout=2026%2F12%2F14&type=rooms&is_day_use=false&order=price_low_to_high&is_including_occupied=false&rooms=%5B%7B%22adults%22%3A1%7D%5D&parentUrl=https%3A%2F%2Fwww.hotelvenueg.co.kr&parentPathname=%2F&locale=en",
+      "title": "Hotel Venue G (Hotel Venue-G Seoul)｜2026-12-10–2026-12-14 官網查核",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "₩ 637,200 for 4 nights\n(Taxes and fees included)\nBook",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 55,
+      "url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00311&start=2026-12-03&end=2026-12-07&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "title": "Toyoko Inn Seoul Yeongdeungpo｜2026-12-03–2026-12-07 官網查核",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "There are no rooms available for Single.",
+          "added": "2026-10-18"
+        }
+      ]
+    },
+    {
+      "id": 56,
+      "url": "https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00311&start=2026-12-10&end=2026-12-14&room=1&people=1&smoking=all&tab=roomType&sort=recommend",
+      "title": "Toyoko Inn Seoul Yeongdeungpo｜2026-12-10–2026-12-14 官網查核",
+      "accessed": "2026-10-18",
+      "quotes": [
+        {
+          "text": "There are no rooms available for Single.",
+          "added": "2026-10-18"
+        }
+      ]
     }
   ]
 }

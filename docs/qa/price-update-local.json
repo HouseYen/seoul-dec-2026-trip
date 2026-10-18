@@ -1,0 +1,33 @@
+{
+  "created_by": "Hermes Agent",
+  "version": "1.1",
+  "created_at": "2026-10-18T12:03:12.069681+08:00",
+  "scope": "local pre-release; not remote deployment or provider checkout confirmation",
+  "site_version": "v2.1",
+  "playwright_stats": {
+    "startTime": "2026-10-18T04:02:47.615Z",
+    "duration": 22669.981,
+    "expected": 42,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "cases_by_project": {
+    "desktop": 21,
+    "mobile": 21
+  },
+  "observed_cases": 42,
+  "local_assets_checked": 21,
+  "local_assets_all_200": true,
+  "ui_page_errors": [],
+  "mobile_and_desktop_overflow": false,
+  "original_hotel_cases": 6,
+  "alternative_hotel_cases": 4,
+  "total_hotel_cases": 10,
+  "selected_flight_observations": 3,
+  "official_fare_checks": 4,
+  "hotel_hard_budget_satisfied": false,
+  "airline_checkout_verified": false,
+  "alternative_hotel_research_status": "completed_with_gaps",
+  "common_fx_twd_per_krw": 0.02433396
+}

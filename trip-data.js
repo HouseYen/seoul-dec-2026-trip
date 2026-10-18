@@ -1,7 +1,7 @@
 'use strict';
 // Public planning data only. Dates are candidates, not reservations.
 window.TRIP_DATA = {
-  version: 'v2.0', reviewedOn: '2026-10-16', daysCount: 5, nights: 4, hotelNightCap: 3000,
+  version: 'v2.1', reviewedOn: '2026-10-18', daysCount: 5, nights: 4, hotelNightCap: 3000,
   dateOptions: ['2026-12-03', '2026-12-10'],
   sources: [
     { id: 1, title: 'Visit Seoul｜景福宮', url: 'https://english.visitseoul.net/attractions/Gyeongbokgung/ENP000072', note: '已讀：11–12 月 09:00–17:00，最後入場提前一小時；一般週二休。' },
@@ -9,9 +9,9 @@ window.TRIP_DATA = {
     { id: 6, title: 'Visit Seoul｜東大門烤魚街', url: 'https://english.visitseoul.net/tours/Pyeonghwa-Markets-friend-of-30-years-Dongdaemun-Grilled-Fish-Street_/11084', note: '介紹頁較舊；僅用於街區與料理類型，不沿用舊價格／當前營業承諾。' },
     { id: 7, title: '國立中央博物館｜參觀資訊', url: 'https://www.museum.go.kr/ENG/contents/E0101010000.do', note: '已讀：常設展一般免費；3、6、9、12 月首個週一常設與特展區休館，另有例外公告。' },
     { id: 9, title: 'Asiana｜托運行李一般規則', url: 'https://flyasiana.com/C/US/EN/contents/free-baggage', note: '一般航線規則已讀，不代表候選航班／票種的最後結帳條款。' },
-    { id: 11, title: 'Toyoko Inn｜東大門 No.1', url: 'https://www.toyoko-inn.com/eng/search/detail/00208', note: '已讀地址與早餐資訊；未核實兩組入住日期的房價、空房與取消條款。' },
-    { id: 12, title: 'Toyoko Inn｜東大門 No.2', url: 'https://www.toyoko-inn.com/eng/search/detail/00291', note: '已讀地址與早餐資訊；未核實指定日期房價、空房與取消條款。' },
-    { id: 13, title: 'Travelodge Dongdaemun Seoul｜官網', url: 'https://travelodgehotels.asia/travelodge-dongdaemun-seoul', note: '已讀 Standard Single 房型與地址；指定日期供應／含稅房價待核。' },
+    { id: 11, title: 'Toyoko Inn｜東大門 No.1', url: 'https://www.toyoko-inn.com/eng/search/detail/00208', note: '一般飯店介紹：地址與早餐資訊；指定日期的官網查核另列價格卡，不把介紹頁當可訂房證據。' },
+    { id: 12, title: 'Toyoko Inn｜東大門 No.2', url: 'https://www.toyoko-inn.com/eng/search/detail/00291', note: '一般飯店介紹：地址與早餐資訊；指定日期查核另列價格卡，取消條款未取得就留空。' },
+    { id: 13, title: 'Travelodge Dongdaemun Seoul｜官網', url: 'https://travelodgehotels.asia/travelodge-dongdaemun-seoul', note: '一般房型與地址已讀；日期綁定的逐晚原幣、總稅費及預算判定見價格卡與官網引擎來源。' },
     { id: 14, title: 'Montana Sports｜官網', url: 'https://montanaski.co.kr', note: '已核實地址；官網時段有月份限制／文字不一致，12 月時間與庫存待確認。' },
     { id: 15, title: 'Best Snowboard｜官網', url: 'https://www.bestsnowboard.co.kr', note: '官網韓文採 CP949 解碼核對；地址已核實，出發日營業與尺碼仍須確認。' },
     { id: 18, title: 'CJ ONE 官方｜Olive Young 明洞 Town', url: 'https://m.cjone.com/cjmmobile/store/storeAreaDetail.do?coopco_cd=7030&brnd_cd=3000&no=D176', note: '店址已核；Olive Young 行動詳情頁存取受限，改用 CJ 官方店舖資料交叉核對。' },
@@ -88,9 +88,9 @@ window.TRIP_DATA = {
     { id: 'sparex', category: 'relax', title: 'SPAREX 東大門汗蒸幕', tag: 'DAY 2／晚間逛街替案', text: 'Seoul PASS 刊載日間 ₩14,000、成人夜間 ₩15,900 與 24 小時資訊；只是票務平台觀察，不是 12 月承諾。查好票種、清潔限制與入場方式再去。', address: 'Goodmorning City B3, 247 Jangchungdan-ro, Jung-gu, Seoul', query: '스파렉스 굿모닝시티 서울 장충단로 247', refs: [4] }
   ],
   hotels: [
-    { title: 'Toyoko Inn Seoul Dongdaemun No.1', tag: '優先查價／正式商務飯店', address: '337, Toegye-ro, Jung-gu, Seoul', text: '官方列免費早餐與房內衛浴設備；先查單人可住的整間房。房型、取消與晚到條款依指定日期確認。', query: '토요코인 서울 동대문1 서울 퇴계로 337', refs: [11] },
+    { title: 'Toyoko Inn Seoul Dongdaemun No.1', tag: '正式商務飯店／不是預算保證', address: '337, Toegye-ro, Jung-gu, Seoul', text: '官方列免費早餐與房內衛浴設備；先查單人可住的整間房。房型、取消與晚到條款依指定日期確認。', query: '토요코인 서울 동대문1 서울 퇴계로 337', refs: [11] },
     { title: 'Toyoko Inn Seoul Dongdaemun No.2', tag: '同品牌備選／別混門牌', address: '325, Toegye-ro, Jung-gu, Seoul', text: '官方列免費早餐與房內衛浴設備。No.1／No.2 是不同飯店，訂房名稱、地址與地圖要一致。', query: '토요코인 서울 동대문2 서울 퇴계로 325', refs: [12] },
-    { title: 'Travelodge Dongdaemun Seoul', tag: '單人房備選／Standard Single', address: '359 Dongho-ro, Jung-gu, Seoul', text: '官方明列 Standard Single 單人床房型。指定日期是否有房、私人衛浴與含稅價格需在訂房頁再次確認。', query: '트래블로지 동대문 서울 동호로 359', refs: [13] }
+    { title: 'Travelodge Dongdaemun Seoul', tag: '本次價格超預算／不列合格推薦', address: '359 Dongho-ro, Jung-gu, Seoul', text: '官方明列 Standard Single 單人床房型與此地址。飯店身分和房型介紹不等於指定日期預算達標，逐晚價格另列下方。', query: '트래블로지 동대문 서울 동호로 359', refs: [13] }
   ],
   todoGroups: [
     { id: 'now', title: '現在先完成｜行程定案', items: [

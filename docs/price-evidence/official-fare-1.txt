@@ -1,0 +1,12 @@
+Creator: Hermes Agent
+Version: 1.0
+Purpose: official-search blocker, NOT a fare
+Retrieved: 2026-10-18T10:43:11.894000+08:00
+Public entry: https://booking.evaair.com/flyeva/eva/b2c/booking-online.aspx?lang=zh-tw
+Requested: 2026-12-03 to 2026-12-07, TPE-ICN round trip, 1 adult Economy
+Search target host: booking.evaair.com
+Analytics query omitted from this public artifact.
+
+Provider response excerpt:
+Access Denied
+You don't have permission to access "http://booking.evaair.com/flyeva/eva/b2c/booking-online.aspx?" on this server.

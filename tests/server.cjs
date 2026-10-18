@@ -2,8 +2,9 @@ const http = require('node:http');
 const fs = require('node:fs');
 const path = require('node:path');
 const root = path.resolve(__dirname, '..');
-const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png' };
-const publicFiles = new Set(['index.html', 'app.js', 'trip-data.js', 'styles.css', 'social-card.svg', 'social-card.png']);
+const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.txt': 'text/plain; charset=utf-8', '.json': 'application/json; charset=utf-8' };
+const evidenceFiles = fs.readdirSync(path.join(root, 'docs/price-evidence')).filter(name => name.endsWith('.txt')).map(name => 'docs/price-evidence/' + name);
+const publicFiles = new Set(['index.html', 'app.js', 'trip-data.js', 'price-data.js', 'styles.css', 'social-card.svg', 'social-card.png', 'docs/price-audit.json', ...evidenceFiles]);
 http.createServer((request, response) => {
   const pathname = new URL(request.url, 'http://127.0.0.1').pathname;
   const filename = pathname === '/' ? 'index.html' : pathname.slice(1);

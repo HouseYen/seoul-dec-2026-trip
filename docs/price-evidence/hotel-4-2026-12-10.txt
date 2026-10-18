@@ -1,0 +1,9 @@
+Creator: Hermes Agent
+Version: 1.0
+Purpose: dated read-only hotel rate evidence; no booking made
+Retrieved: 2026-10-18T02:49:13.346Z
+Source: https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00291&start=2026-12-10&end=2026-12-14&room=1&people=1&smoking=all&tab=roomType&sort=recommend
+Observed conditions: 2026-12-10 to 2026-12-14, 1 adult, 1 room, 4 nights
+
+Provider text (verbatim excerpt):
+There are no rooms available for Single.

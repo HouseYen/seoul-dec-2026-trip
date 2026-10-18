@@ -9,7 +9,7 @@
 <meta property="og:type" content="website"><meta property="og:url" content="https://houseyen.github.io/seoul-dec-2026-trip/">
 <meta property="og:image" content="https://houseyen.github.io/seoul-dec-2026-trip/social-card.png?v=2"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><link rel="canonical" href="https://houseyen.github.io/seoul-dec-2026-trip/">
-<link rel="stylesheet" href="styles.css"><script defer src="trip-data.js"></script><script defer src="app.js"></script>
+<link rel="stylesheet" href="styles.css"><script defer src="trip-data.js"></script><script defer src="price-data.js"></script><script defer src="app.js"></script>
 <title>首爾，一個人剛剛好｜2026 冬日五日旅</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
 <div class="chips"><span>獨旅慢節奏</span><span>吃喝・購物・觀光</span><span>地鐵＋步行</span></div>
 <div class="hero-actions"><button class="button primary" type="button" data-open-tab="todos">從待辦開始 ↗</button><button class="button quiet" id="share-trip" type="button">分享行程</button><button class="button quiet" id="print-trip" type="button">列印／存 PDF</button></div>
 </div><div class="trip-pass" aria-label="旅程規劃摘要">
-<div class="pass-top"><span>YOUR WINTER ESCAPE</span><span class="version" data-site-version>v2.0</span></div>
+<div class="pass-top"><span>YOUR WINTER ESCAPE</span><span class="version" data-site-version>v2.1</span></div>
 <div class="airport-codes"><div><strong>TPE</strong><small>台北桃園</small></div><span aria-hidden="true">⇄</span><div><strong>ICN</strong><small>首爾仁川</small></div></div>
 <div class="pass-rule"></div><div class="pass-metrics"><div><strong>05<small> DAYS</small></strong><span>四晚住宿</span></div><div><strong>01<small> PERSON</small></strong><span>一條主線／天</span></div></div>
 <div class="winter-art" aria-hidden="true"><span class="moon"></span><span class="hill hill-back"></span><span class="hill"></span><span class="tower"></span><span class="art-label">LESS RUSH. MORE SEOUL.</span></div><p class="pass-bottom">日期與航班尚待定案 · 先規劃，再下訂</p></div></div></header>
@@ -61,13 +61,17 @@
 <div class="notice subtle"><strong>海鮮獨旅決策：</strong>先問一人份，再確認「食材＋料理＋其他費用」總額。不合份量／預算就換熟食套餐。DAY 4 不去市場時，當天留在住宿區吃，不把先前 DAY 2 當成當晚備案。</div></section>
 <section class="tab-panel" role="tabpanel" id="panel-hotels" aria-labelledby="tab-hotels" tabindex="0" hidden>
 <div class="section-heading"><div><p class="eyebrow">04 / A PLACE TO REST</p><h2>找正式飯店，不拿起價當承諾。</h2></div><span class="stamp">預算 ≤ NT$3,000／房晚</span></div>
-<div class="notice"><strong>指定日期房價：未核實。</strong>以下是正式飯店候選，不是已確認在預算內的可訂房。搜尋請設 1 成人、1 房、整間客房，逐晚含稅費不得超過 NT$3,000；超過就排除。</div>
-<div class="two-column subsection"><article class="card"><span class="card-kicker">先選區域</span><h3>明洞方便，東大門作預算備案</h3><p>明洞是原定住宿區；若查不到符合上限的正式飯店，可查東大門。改區後，用上方「住宿區域錨點」更新地圖。下列三家候選都在東大門，並非明洞飯店。</p></article><article class="card"><span class="card-kicker">訂房檢核</span><h3>四晚合計只是第一關</h3><p>每晚含稅上限 NT$3,000，四晚住宿上限 <strong id="hotel-total-cap"></strong>；還要逐晚檢查，不以平均值掩蓋某晚超標。確認取消截止、禁菸、私人衛浴與晚到入住。</p></article></div>
-<div id="hotel-cards" class="cards subsection"></div><p class="fineprint">已移除不適用指定日期的美元起價與匯率換算。飯店名稱、地址及實際房型以官方訂房頁為準，不把名稱相似的不同飯店混用。</p></section>
+<div class="notice" id="hotel-price-status"><strong>正在讀取指定日期查核結果。</strong>未核實房價不視為達標；逐晚含稅費不得超過 NT$3,000。</div>
+<div class="two-column subsection"><article class="card"><span class="card-kicker">先選區域</span><h3>明洞方便，其他區不默默套進地圖</h3><p>明洞是原定住宿區；原三家介紹都在東大門，並非明洞飯店。另補查鍾路／清溪川 Hotel Venue G、永登浦東橫 INN，價格卡明標區域；這兩區尚未設為上方地圖錨點，不能直接套用原機場接駁。</p></article><article class="card"><span class="card-kicker">訂房檢核</span><h3>四晚合計只是第一關</h3><p>每晚含稅上限 NT$3,000，四晚住宿上限 <strong id="hotel-total-cap"></strong>；還要逐晚檢查，不以平均值掩蓋某晚超標。確認取消截止、禁菸、私人衛浴與晚到入住。</p></article></div>
+<div id="hotel-cards" class="cards subsection"></div>
+<section id="hotel-price-audit" class="subsection" aria-labelledby="hotel-price-title"><h3 id="hotel-price-title">指定日期逐晚房價查核｜2026-10-18 快照</h3><p id="hotel-price-filter" class="fineprint"></p><div id="hotel-rate-cards" class="cards"></div><p class="fineprint">逐晚未稅房費與四晚含已列稅費總額分開。總稅費未自行分攤，不用四晚均價證明每晚達標；未取得稅費、房型或取消條款就保留缺失。來源入口重新開啟時，日期、人數與房數仍須核對。</p><p id="hotel-fx-note" class="fineprint"></p></section>
+<p class="fineprint">未採不適用指定日期的美元起價。飯店名稱、地址及實際房型以官方訂房頁為準，不把名稱相似的不同飯店混用。</p></section>
 <section class="tab-panel" role="tabpanel" id="panel-flights" aria-labelledby="tab-flights" tabindex="0" hidden>
 <div class="section-heading"><div><p class="eyebrow">05 / BEFORE YOU BOOK</p><h2>同日期、同機場、同行李，才叫比價。</h2></div></div>
-<div class="notice"><strong>尚未取得兩組日期的同條件來回含稅、含托運結帳總價。</strong>這裡提供兩組日期的查票條件卡與比較規格；不再展示反向 SEL→TPE、少一天或過期快照價格，也不宣稱哪家最低。</div>
+<div class="notice"><strong>已取得韓亞三筆選定去回航班的觀察價；尚未取得航空官網復價與結帳確認。</strong>長榮、華航官方引擎受阻，維持無報價；不拿日期不符的日曆起價替代，也不宣稱已比完所有航空。</div>
 <p class="lede">固定：1 成人・經濟艙・TPE ⇄ ICN・來回・直飛・5 天 4 夜。外部實測 Google Flights 舊日期深連結未套用，已撤下；先複製卡片條件，再到 Google Flights 或航空官網手動輸入與核對。</p><div id="flight-cards" class="two-column"></div>
+<section id="flight-price-audit" class="subsection" aria-labelledby="flight-price-title"><h3 id="flight-price-title">已選去回航班的觀察價｜2026-10-18 快照</h3><div class="notice subtle" id="flight-price-summary"></div><p id="flight-price-filter" class="fineprint"></p><div id="flight-quote-cards" class="cards"></div><p class="notice subtle"><strong>12/14 08:00 早回的代價：</strong>若採本行程「起飛前約 3 小時到機場」的保守規劃，需約 05:00 抵達機場；先查清晨接駁或計程車，不先假設 AREX 趕得到。便宜的票價差可能被接駁與體力成本抵銷。</p><p class="fineprint">韓亞轉站當次遇連線錯誤，沒有確認航空官網最後總價。Google 頁面的首件免費托運和官網一般 23 kg 規則分列，不把一般規則當作已核對票種或雪具條款。</p></section>
+<section class="subsection" aria-labelledby="official-price-title"><h3 id="official-price-title">其他航空官方查核｜沒取得就明說</h3><div id="airline-check-cards" class="two-column"></div></section>
 <div class="subsection two-column"><article class="card"><span class="card-kicker">方案 1 / 少加購</span><h3>先看傳統航空含行李方案</h3><p>以 Asiana 等傳統航空查相同日期。行李額度依航線、票價與實際承運人確認；一般規則不等於你選中的機票條款。<span id="asiana-citation"></span></p><a href="https://flyasiana.com/C/TW/EN/index" target="_blank" rel="noopener noreferrer">Asiana 官方訂票 ↗</a></article><article class="card"><span class="card-kicker">方案 2 / 核對加購後</span><h3>廉航看去回兩段總價</h3><p>以台灣虎航等廉航查相同日期；去、回托運各算一次，若票種已含則不重複加。座位、付款及必要費用也要列清楚，不拿裸票面價直接比較。</p><a href="https://www.tigerairtw.com/zh-tw/" target="_blank" rel="noopener noreferrer">台灣虎航官方訂票 ↗</a> <a href="https://www.tigerairtw.com/zh-tw/ready-to-go/fees" target="_blank" rel="noopener noreferrer">官方費用頁（需重新確認）↗</a></article></div>
 <div class="notice subtle"><strong>下訂前：</strong>核對機場、日期、直飛、起降時間、行李與退改。雪板／雪具不一定算一般托運；先看超尺寸與運動器材規則。不在這個公開網站存護照、訂位代碼或個資。</div></section>
 <section class="tab-panel" role="tabpanel" id="panel-todos" aria-labelledby="tab-todos" tabindex="0" hidden>
@@ -76,8 +80,8 @@
 <div class="toolbar" role="group" aria-label="待辦篩選"><button type="button" data-todo-filter="all" aria-pressed="true">全部</button><button type="button" data-todo-filter="open" aria-pressed="false">未完成</button><button type="button" data-todo-filter="done" aria-pressed="false">已完成</button></div><div id="todo-groups" class="todo-groups"></div><p id="todo-empty" class="notice subtle" hidden>目前這個篩選沒有項目。</p>
 <div class="notice subtle"><strong>保存範圍：</strong>只在這台裝置、這個瀏覽器保存，不會同步雲端或其他裝置；清除網站資料會遺失。更換裝置前請先備份，公開網站不保存私人訂單。</div><div id="todo-backup-tools" class="backup-tools"><button class="button outline" type="button" id="todo-export">匯出本機備份 ↓</button><button class="button outline" type="button" id="todo-import-open">還原備份 ↑</button><input id="todo-import" type="file" accept=".json,application/json" hidden aria-label="選擇待辦 JSON 備份"><small class="muted">JSON 只含 10 項勾選與規劃偏好；不含個資，不上傳。</small></div></section>
 </main>
-<footer class="footer wrap"><details id="sources"><summary>資料來源、尚待確認與修訂紀錄</summary><p class="fineprint">查核日期：<time datetime="2026-10-16">2026-10-16</time>（Asia/Taipei）。頁面刊載資訊不代表出發當天營運、房價或座位保證。</p><ol id="source-list" class="source-list"></ol><div class="revision-note"><strong>v2.0 · 兩輪重整</strong><p>第一輪：六分頁、每日主線與備案、飯店／機票資料辨識、Google Maps 分段導航。第二輪：依實測補強操作與保存邊界，結果記錄在 Git 專案的 QA 文件。</p><p>舊版 v1.13 保留在 Git 歷史；固定網站與專案不變。</p></div></details>
-<div class="footer-meta"><div><strong>首爾，一個人剛剛好。</strong><small>建立者：豪斯的 Hermes Agent · 建立日期：2026-10-10<br>版次：v2.0 · 修訂日期：2026-10-16 · 目的：冬季首爾獨旅規劃</small></div><a href="https://github.com/HouseYen/seoul-dec-2026-trip" target="_blank" rel="noopener noreferrer">同一個 GitHub 專案 ↗</a></div></footer>
+<footer class="footer wrap"><details id="sources"><summary>資料來源、尚待確認與修訂紀錄</summary><p class="fineprint">價格查核日期：<time datetime="2026-10-18">2026-10-18</time>（Asia/Taipei）；其他景點／店舖沿用 2026-10-16 查核，未假稱同步重查。頁面刊載資訊不代表出發當天營運、房價或座位保證。</p><ol id="source-list" class="source-list"></ol><div class="revision-note"><strong>v2.1 · 指定日期價格與缺失透明化</strong><p>加入原三間及兩家替代飯店×兩組日期共十筆查核、韓亞三筆選定行程觀察價、長榮／華航官方查詢阻塞及日期篩選。統一參考匯率；未知逐晚價格、超預算與官網未復價分開呈現，未提高預算或更換地圖住宿錨點。價格證據與界面測試不是同一件事。</p><p>v2.0 六分頁與兩輪重整、舊版 v1.13 保留在 Git 歷史；固定網站與專案不變。</p></div></details>
+<div class="footer-meta"><div><strong>首爾，一個人剛剛好。</strong><small>建立者：豪斯的 Hermes Agent · 建立日期：2026-10-10<br>版次：v2.1 · 修訂日期：2026-10-18 · 目的：冬季首爾獨旅規劃</small></div><a href="https://github.com/HouseYen/seoul-dec-2026-trip" target="_blank" rel="noopener noreferrer">同一個 GitHub 專案 ↗</a></div></footer>
 <dialog id="share-link-dialog" aria-labelledby="share-link-title"><h2 id="share-link-title">手動複製分享連結</h2><p>瀏覽器未允許自動複製，請選取下方內容後自行複製。</p><label for="share-link-input">可複製內容</label><input id="share-link-input" type="text" readonly><button class="button primary" type="button" id="share-link-close">關閉</button></dialog>
 <div id="app-status" class="toast" role="status" aria-live="polite" hidden></div><noscript><div class="wrap notice">互動行程需要 JavaScript。請啟用後查看每日站點、飯店候選與可保存待辦；固定機票條件與航空官網連結仍可使用。</div></noscript>
 </body></html>

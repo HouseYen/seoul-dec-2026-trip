@@ -1,0 +1,186 @@
+Creator: Hermes Agent
+Version: 1.0
+Purpose: dated read-only hotel rate evidence; no booking made
+Retrieved: 2026-10-18T03:35:56.599Z
+Source: https://www.toyoko-inn.com/eng/search/result/room_plan/?hotel=00311&start=2026-12-03&end=2026-12-07&room=1&people=1&smoking=all&tab=roomType&sort=recommend
+Observed: 2026-12-03 to 2026-12-07, 1 adult, 1 room, 4 nights
+
+Provider search text:
+Find & Reserve
+Smart Stays
+Hotel List
+About Our Hotels
+Corporate Customers　
+FAQs
+Log in
+Toyoko Inn Seoul Yeongdeungpo
+Hotel Info
+Dates
+Guests & Rooms
+Search
+
+Search by Room
+
+Search by Stay
+
+Displayed prices include consumption tax but exclude accommodation tax
+
+Single
+
+Non-Smoking
+
+12㎡
+
+150cm×1
+
+Parking : First-come-first-served basis ₩10,000/1 Night
+Availability Calendar
+
+There are no rooms available for Single.
+
+Tube Single
+
+Non-Smoking
+
+12㎡
+
+150cm×1
+
+Parking : First-come-first-served basis ₩10,000/1 Night  **No View**
+Availability Calendar
+
+There are no rooms available for Tube Single.
+
+RumiSingle
+
+Non-Smoking
+
+15㎡
+
+150cm×1
+
+Parking : First-come-first-served basis ₩10,000/1 Night  **No View**
+Availability Calendar
+
+There are no rooms available for RumiSingle.
+
+Economy Double
+
+Non-Smoking
+
+12㎡
+
+150cm×1
+
+Parking : First-come-first-served basis ₩10,000/1 Night  **These room are near to subway, station noise may be heard. **
+See More
+Availability Calendar
+
+There are no rooms available for Economy Double.
+
+EconomyDoubleCityView
+
+Non-Smoking
+
+12㎡
+
+150cm×1
+
+Parking : First-come-first-served basis ₩10,000/1 Night
+Availability Calendar
+
+There are no rooms available for EconomyDoubleCityView.
+
+Double
+
+Non-Smoking
+
+15㎡
+
+160cm×1
+
+Parking : First-come-first-served basis ₩10,000/1 Night  **No View**
+Availability Calendar
+
+There are no rooms available for Double.
+
+HollywoodDouble
+
+Non-Smoking
+
+15㎡
+
+160cm×1 110cm×1
+
+Parking : First-come-first-served basis ₩10,000/1 Night  **No View**
+Availability Calendar
+
+There are no rooms available for HollywoodDouble.
+
+Twin
+
+Non-Smoking
+
+15㎡
+
+110cm×2
+
+Parking : First-come-first-served basis ₩10,000/1 Night  **No View**
+Availability Calendar
+
+There are no rooms available for Twin.
+
+Accessible Twin
+
+Non-Smoking
+
+25㎡
+
+110cm×1 140cm×1
+
+Accessible rooms designed to accommodate all guests comfortably.
+Availability Calendar
+
+There are no rooms available for Accessible Twin.
+
+Available Room(s)
+Show Available Only
+Smoking Option
+Non-Smoking
+Smoking
+No Preference
+Sort By
+Recommended
+Price: Low to High
+Filter by Room Type
+Single
+Double
+Twin
+Triple or More
+Filter by Plan Type
+Standard Package
+Find & Reserve
+Group Reservations
+Smart Stays
+Hotel List
+Why Choose Toyoko Inn
+The Best Way to Stay With Us
+Toyoko Inn Club Card Member
+The Toyoko Inn Guide
+Corporate Customers　
+FAQs
+Contact Us
+About Us
+Sustainability
+
+English
+
+© Toyoko Inn Co., Ltd.
+
+Privacy Settings
+Privacy Policy
+With Regards to the Act on Specified Commercial Transactions
+Site Policy
+Hotel Stay Terms & Conditions
+Online Account Terms & Conditions
+Toyoko Inn Club Card Membership Terms and Conditions

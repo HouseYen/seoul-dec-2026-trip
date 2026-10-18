@@ -1,13 +1,14 @@
 {
   "name": "seoul-dec-2026-trip",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "private": true,
   "description": "Seoul solo-trip planning site, with reproducible browser checks.",
   "scripts": {
     "test": "playwright test",
     "test:desktop": "playwright test --project=desktop",
     "test:mobile": "playwright test --project=mobile",
-    "check": "node --check app.js && node --check trip-data.js && node tests/validate-data.cjs"
+    "check": "node --check app.js && node --check trip-data.js && node --check price-data.js && node tests/validate-data.cjs && node tests/validate-prices.cjs",
+    "build:prices": "node scripts/build-price-data.cjs"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.14.0",
