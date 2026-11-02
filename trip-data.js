@@ -1,9 +1,13 @@
 'use strict';
 // Public planning data only. Dates are candidates, not reservations.
 window.TRIP_DATA = {
-  version: 'v2.1', reviewedOn: '2026-10-18', daysCount: 5, nights: 4, hotelNightCap: 3000,
+  version: 'v2.2', reviewedOn: '2026-10-18', locationReviewedOn: '2026-11-02', daysCount: 5, nights: 4, hotelNightCap: 3000,
   dateOptions: ['2026-12-03', '2026-12-10'],
   sources: [
+    { id: 57, title: 'Toyoko Inn｜首爾江南官方位置', url: 'https://www.toyoko-inn.com/eng/search/detail/00282', note: '2026-11-02核對地址與車站指引；未重查指定日期空房或價格。' },
+    { id: 58, title: '東大門No.2｜官方電梯步行指引', url: 'https://www.toyoko-inn.com/eng/search/detail/00291/access', note: '2026-11-02讀取1號出口電梯繞行圖文；出發前再核可用狀態。' },
+    { id: 59, title: '首爾地鐵2號線｜路網交叉核對', url: 'https://en.wikipedia.org/wiki/Seoul_Subway_Line_2', note: '2026-11-02核對站序；非即時班次、票價或門到門耗時。' },
+    { id: 60, title: '首爾地鐵4號線｜路網交叉核對', url: 'https://en.wikipedia.org/wiki/Seoul_Subway_Line_4', note: '2026-11-02核對首爾站、明洞及東大門歷史文化公園站；不保證12月班次。' },
     { id: 1, title: 'Visit Seoul｜景福宮', url: 'https://english.visitseoul.net/attractions/Gyeongbokgung/ENP000072', note: '已讀：11–12 月 09:00–17:00，最後入場提前一小時；一般週二休。' },
     { id: 4, title: 'Seoul PASS｜東大門 SPAREX 票券', url: 'https://www.seoultravelpass.com/en/products/1496-seoul-dongdaemun-sparex-jjimjilbang-sauna-admission-ticket', note: '票務平台，非場館官網：刊載地址、日間 14,000／成人夜間 15,900 韓元；出發前重查。' },
     { id: 6, title: 'Visit Seoul｜東大門烤魚街', url: 'https://english.visitseoul.net/tours/Pyeonghwa-Markets-friend-of-30-years-Dongdaemun-Grilled-Fish-Street_/11084', note: '介紹頁較舊；僅用於街區與料理類型，不沿用舊價格／當前營業承諾。' },

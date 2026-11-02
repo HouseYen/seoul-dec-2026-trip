@@ -1,6 +1,6 @@
 {
   "name": "seoul-dec-2026-trip",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "private": true,
   "description": "Seoul solo-trip planning site, with reproducible browser checks.",
   "scripts": {
