@@ -12,7 +12,7 @@ test('v2 has six linked tabs, valid IDs and source anchors', async ({ page }) =>
   const errors = [];
   page.on('pageerror', error => errors.push(error.message));
   await page.goto('./');
-  await expect(page.locator('[data-site-version]')).toHaveText('v2.2');
+  await expect(page.locator('[data-site-version]')).toHaveText('v3.1');
   const tabs = page.getByRole('tab');
   await expect(tabs).toHaveText(tabNames);
   for (const name of tabNames) {
@@ -34,12 +34,10 @@ test('v2 has six linked tabs, valid IDs and source anchors', async ({ page }) =>
 
 test('date candidates and hotel base update the itinerary without implying bookings', async ({ page }) => {
   await page.goto('./');
-  await page.locator('#date-option').selectOption('2026-12-03');
-  await expect(page.locator('[data-day-date="1"]')).toContainText('12/3');
-  await expect(page.locator('[data-day-date="5"]')).toContainText('12/7');
-  await expect(page.locator('#date-summary')).toContainText('5 天 4 夜');
-  await page.locator('#date-option').selectOption('2026-12-10');
-  await expect(page.locator('[data-day-date="5"]')).toContainText('12/14');
+  await expect(page.locator('#date-option')).toBeDisabled();
+  await expect(page.locator('[data-day-date="1"]')).toContainText('12/10');
+  await expect(page.locator('[data-day-date="4"]')).toContainText('12/13');
+  await expect(page.locator('#date-summary')).toContainText('4 天 3 夜');
   await page.locator('#stay-area').selectOption('dongdaemun');
   await page.getByRole('tab', { name: '地圖導航', exact: true }).click();
   await expect(page.locator('#map-anchor-note')).toContainText('東大門');
@@ -49,13 +47,13 @@ test('date candidates and hotel base update the itinerary without implying booki
   await expect(page.locator('#booking-status')).toContainText('未代表已訂位');
 });
 
-test('all five Google routes use separate accurate segment links and a real all-days list', async ({ page }) => {
+test('all four Google routes use separate accurate segment links and a real all-days list', async ({ page }) => {
   await page.goto('./');
   await page.getByRole('tab', { name: '地圖導航', exact: true }).click();
   const dayButtons = page.locator('[data-map-day]');
-  await expect(dayButtons).toHaveCount(6);
-  expect(await dayButtons.evaluateAll(nodes => nodes.map(n => n.dataset.mapDay))).toEqual(['1', '2', '3', '4', '5', 'all']);
-  for (const day of ['1', '2', '3', '4', '5']) {
+  await expect(dayButtons).toHaveCount(5);
+  expect(await dayButtons.evaluateAll(nodes => nodes.map(n => n.dataset.mapDay))).toEqual(['1', '2', '3', '4', 'all']);
+  for (const day of ['1', '2', '3', '4']) {
     await page.locator(`[data-map-day="${day}"]`).click();
     const links = await page.locator('#map-segments a[data-segment-link]').evaluateAll(nodes => nodes.map(a => a.href));
     expect(links.length).toBeGreaterThan(0);
@@ -76,10 +74,10 @@ test('all five Google routes use separate accurate segment links and a real all-
     expect(preview.searchParams.get('daddr')).toBe(last.searchParams.get('destination'));
   }
   await page.locator('[data-map-day="all"]').click();
-  await expect(page.locator('#all-days-map .all-day-card')).toHaveCount(5);
+  await expect(page.locator('#all-days-map .all-day-card')).toHaveCount(4);
   await expect(page.locator('#all-days-map')).toContainText('景福宮');
   await expect(page.locator('#all-days-map')).toContainText('弘大');
-  await expect(page.locator('#all-days-map')).toContainText('雪具');
+  await expect(page.locator('#all-days-map')).toContainText('仁川機場');
   await expect(page.locator('#map-preview')).toBeHidden();
 });
 
@@ -94,20 +92,21 @@ test('places filter, hotel scope and honest exact-date flight conditions are pre
   await expect(page.locator('.place-card:visible')).toHaveCount(2);
   await page.getByRole('tab', { name: '飯店住宿', exact: true }).click();
   await expect(page.locator('#panel-hotels')).toContainText('NT$3,000');
-  await expect(page.locator('#panel-hotels')).toContainText('未核實');
+  await expect(page.locator('#hotel-current-policy')).toContainText('目前沒有已核實合格推薦');
+  await expect(page.locator('#hotel-price-status')).toContainText('0 筆已核實預算內');
   await expect(page.locator('#panel-hotels')).not.toContainText('US$40');
   await page.getByRole('tab', { name: '機票比價', exact: true }).click();
   await expect(page.locator('#panel-flights')).toContainText('尚未取得');
   await expect(page.locator('#panel-flights')).not.toContainText('US$329');
   const searches = await page.locator('a[data-flight-search]').evaluateAll(nodes => nodes.map(n => n.href));
-  expect(searches.length).toBe(2);
+  expect(searches.length).toBe(1);
   expect(searches.every(href => !href.includes('#flt='))).toBe(true);
   const scopes = await page.locator('a[data-flight-search]').evaluateAll(nodes => nodes.map(n => [n.dataset.departure, n.dataset.return]));
-  expect(scopes).toEqual([['2026-12-03', '2026-12-07'], ['2026-12-10', '2026-12-14']]);
-  await page.locator('[data-copy-flight="2026-12-03"]').click();
+  expect(scopes).toEqual([['2026-12-10', '2026-12-13']]);
+  await page.locator('[data-copy-flight="2026-12-10"]').click();
   const copied = await page.evaluate(() => window.copiedQuery);
-  expect(copied).toContain('TPE→ICN 2026-12-03');
-  expect(copied).toContain('ICN→TPE 2026-12-07');
+  expect(copied).toContain('TPE→ICN 2026-12-10');
+  expect(copied).toContain('ICN→TPE 2026-12-13');
   await expect(page.locator('#panel-flights')).toContainText('手動輸入');
 });
 

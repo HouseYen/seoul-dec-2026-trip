@@ -3,12 +3,14 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const vm = require('node:vm');
 const context = { window: {} };
-for (const file of ['trip-data.js', 'price-data.js']) vm.runInNewContext(fs.readFileSync(file, 'utf8'), context);
+for (const file of ['trip-data.js', 'price-data.js', 'hotel-options.js']) vm.runInNewContext(fs.readFileSync(file, 'utf8'), context);
 const data = JSON.parse(JSON.stringify(context.window.TRIP_DATA));
 const prices = JSON.parse(JSON.stringify(context.window.TRIP_PRICES));
+const current = JSON.parse(JSON.stringify(context.window.TRIP_CURRENT_HOTELS));
 assert.deepEqual(prices, JSON.parse(fs.readFileSync('docs/price-audit.json', 'utf8')), 'Regenerate price-data.js with npm run build:prices');
+assert.deepEqual(current, JSON.parse(fs.readFileSync('docs/current-hotels.json', 'utf8')), 'Current hotel JS must match audited JSON');
 const ledger = JSON.parse(fs.readFileSync('docs/source-ledger.json', 'utf8'));
-const sources = new Map([...data.sources, ...prices.sources].map(source => [source.id, source]));
+const sources = new Map([...data.sources, ...prices.sources, ...current.sources].map(source => [source.id, source]));
 const canonical = value => { const u = new URL(value); u.pathname = u.pathname.replace(/\/$/, '') || '/'; u.searchParams.sort(); return u.href; };
 for (const source of prices.sources) {
   const entry = ledger.sources.find(row => row.id === source.id);
@@ -16,6 +18,30 @@ for (const source of prices.sources) {
   assert.equal(canonical(source.url), canonical(entry.url));
 }
 assert.equal(new Set(prices.sources.map(row => row.id)).size, prices.sources.length);
+assert.equal(current.records.length, 6);
+assert.equal(new Set(current.records.map(row => row.id)).size, 6);
+assert.equal(current.checkin, '2026-12-10'); assert.equal(current.checkout, '2026-12-13');
+assert.equal(current.nightly_cap_twd, 3000); assert.equal(current.stay_cap_twd, 9000);
+for (const row of current.records) {
+  assert.equal(row.checkin, current.checkin); assert.equal(row.checkout, current.checkout);
+  assert.equal(row.nights, 3); assert.equal(row.adults, 1); assert.equal(row.rooms, 1);
+  assert.equal(row.currency, 'TWD'); assert.equal(row.private_bathroom, true);
+  assert.equal(row.budget_state, 'over-cap-observed');
+  assert.ok(row.displayed_average_before_tax_twd > current.nightly_cap_twd);
+  assert.ok(row.nightly_all_in.every(night => night.amount === null));
+  assert.equal(row.total_all_in, null); assert.equal(row.taxes_fees, null);
+  assert.ok(fs.readFileSync(row.evidence, 'utf8').includes(row.displayed_average_before_tax_twd.toLocaleString('en-US')));
+  for (const id of row.refs) assert.ok(sources.has(id));
+  const url = new URL(row.source_url);
+  assert.equal(url.searchParams.get('checkIn'), current.checkin);
+  assert.equal(url.searchParams.get('checkOut'), current.checkout);
+  assert.equal(url.searchParams.get('adults'), '1');
+}
+for (const source of current.sources) {
+  const entry = ledger.sources.find(row => row.id === source.id);
+  assert.ok(entry, 'Missing current hotel source ' + source.id);
+  assert.equal(canonical(source.url), canonical(entry.url));
+}
 assert.equal(prices.hotel_per_night_cap_twd, 3000);
 assert.equal(prices.comparison_baggage_assumption_kg, 20);
 const original = prices.hotels.filter(row => row.origin === 'original');
@@ -35,7 +61,8 @@ const round = amount => Math.round(amount * 100) / 100;
 for (const hotel of prices.hotels) {
   assert.equal((Date.parse(hotel.checkout) - Date.parse(hotel.checkin)) / 86400000, 4);
   assert.equal(hotel.adults, 1); assert.equal(hotel.rooms, 1); assert.equal(hotel.nights, 4);
-  assert.ok(data.dateOptions.includes(hotel.checkin));
+  assert.ok(['2026-12-03', '2026-12-10'].includes(hotel.checkin), 'Historical hotel departure scope');
+  assert.equal(hotel.checkout, hotel.checkin === '2026-12-03' ? '2026-12-07' : '2026-12-14');
   assert.ok(['unknown', 'over-cap-estimate', 'over-cap-total-estimate', 'within-cap-estimate'].includes(hotel.budget_state));
   if (hotel.origin === 'original' && hotel.budget_state === 'unknown') assert.equal(hotel.total_amount, null);
   if (hotel.budget_state === 'over-cap-estimate') {
@@ -61,7 +88,8 @@ assert.equal(prices.hotelBudgetSatisfied, prices.hotels.some(row => row.budget_s
 assert.equal(prices.flights.length, 3);
 for (const flight of prices.flights) {
   assert.equal((Date.parse(flight.return_date) - Date.parse(flight.outbound_date)) / 86400000 + 1, 5);
-  assert.ok(data.dateOptions.includes(flight.outbound_date));
+  assert.ok(['2026-12-03', '2026-12-10'].includes(flight.outbound_date), 'Historical flight departure scope');
+  assert.equal(flight.return_date, flight.outbound_date === '2026-12-03' ? '2026-12-07' : '2026-12-14');
   assert.equal(flight.adult_count, 1); assert.equal(flight.cabin, 'Economy');
   assert.equal(flight.currency, 'TWD'); assert.equal(flight.nonstop_both, true);
   assert.equal(flight.first_checked_bag_free_entire_trip, true);
@@ -80,4 +108,5 @@ for (const official of prices.officialChecks) {
   assert.ok(official.references.every(ref => !ref.is_exact_quote && ref.return_date !== official.return_date));
 }
 assert.ok(!/\/Users\/|gclid=|_ga\*/.test(JSON.stringify(prices)), 'Private machine paths or anonymous tracking leaked');
+assert.ok(!/\/Users\/|ckuid=|gclid=|_ga\*/.test(JSON.stringify(current)), 'Private path or tracking leaked');
 console.log(JSON.stringify({ hotels: prices.hotels.length, originalHotels: original.length, flightObservations: prices.flights.length, officialChecks: prices.officialChecks.length, sources: prices.sources.length, generatedDataMatches: true, sourceLedgerMatches: true, budgetSatisfiedAtReferenceFx: prices.hotelBudgetSatisfied }, null, 2));

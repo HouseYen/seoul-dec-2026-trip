@@ -8,7 +8,7 @@ const ledger = JSON.parse(fs.readFileSync('docs/source-ledger.json', 'utf8'));
 const canonical = value => { const url = new URL(value); url.pathname = url.pathname.replace(/\/$/, '') || '/'; url.searchParams.sort(); return url.href; };
 assert.equal(data.days.length, data.daysCount);
 assert.equal(data.nights, data.daysCount - 1);
-assert.equal(data.hotelNightCap * data.nights, 12000);
+assert.equal(data.hotelNightCap * data.nights, 9000);
 const sourceIds = data.sources.map(item => item.id);
 assert.equal(new Set(sourceIds).size, sourceIds.length);
 for (const source of data.sources) {
@@ -22,9 +22,9 @@ const todos = data.todoGroups.flatMap(group => group.items.map(item => item.id))
 assert.deepEqual(todos, ['dates', 'flight', 'hotel', 'budget', 'transfer', 'entry', 'connectivity', 'hours', 'events', 'packing']);
 const dates = data.dateOptions.map(start => {
   const days = Array.from({ length: data.daysCount }, (_, i) => new Date(Date.parse(start + 'T00:00:00Z') + i * 86400000));
-  assert.equal((days.at(-1) - days[0]) / 86400000 + 1, 5);
+  assert.equal((days.at(-1) - days[0]) / 86400000 + 1, 4);
   assert.ok(days.some(date => [0, 6].includes(date.getUTCDay())));
-  assert.equal(days[1].getUTCDay(), 5, 'Palace day must stay Friday for both candidates');
+  assert.equal(days[1].getUTCDay(), 5, 'Palace day must stay Friday for confirmed dates');
   return { departure: start, return: days.at(-1).toISOString().slice(0, 10), inclusiveDays: days.length, nights: days.length - 1, weekdays: days.map(d => d.getUTCDay()) };
 });
 const closed = new Date('2026-12-07T00:00:00Z');

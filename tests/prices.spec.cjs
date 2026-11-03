@@ -6,6 +6,7 @@ test.beforeEach(async ({ page }) => {
 
 test('price audit: selected exact-date itineraries are observations, not confirmed checkouts', async ({ page }) => {
   await page.goto('./#flights');
+  await page.locator('#flight-price-history summary').click();
   const cards = page.locator('[data-flight-quote]');
   await expect(cards).toHaveCount(3);
   for (const amount of ['9,736', '13,567', '10,124']) await expect(page.locator('#flight-price-audit')).toContainText('NT$' + amount);
@@ -22,6 +23,7 @@ test('price audit: selected exact-date itineraries are observations, not confirm
 
 test('price audit: six original hotel cases retain missing prices and over-cap evidence', async ({ page }) => {
   await page.goto('./#hotels');
+  await page.locator('#hotel-price-history summary').click();
   const original = page.locator('[data-hotel-rate][data-hotel-origin="original"]');
   await expect(original).toHaveCount(6);
   await expect(original.filter({ has: page.locator('[data-budget-state="unknown"]') })).toHaveCount(4);
@@ -40,29 +42,35 @@ test('price audit: six original hotel cases retain missing prices and over-cap e
   await expect(page.locator('#hotel-price-audit')).toContainText('未自行分攤');
 });
 
-test('price audit: global candidate date filters both quote panels and survives reload', async ({ page }) => {
+test('price audit: historical snapshots remain complete, collapsed and never become current quotes', async ({ page }) => {
   await page.goto('./#flights');
-  await page.locator('#date-option').selectOption('2026-12-03');
-  await expect(page.locator('[data-flight-quote]')).toHaveCount(1);
-  await page.getByRole('tab', { name: '飯店住宿', exact: true }).click();
-  await expect(page.locator('[data-hotel-rate][data-hotel-origin="original"]')).toHaveCount(3);
-  await page.locator('#date-option').selectOption('2026-12-10');
-  await page.getByRole('tab', { name: '機票比價', exact: true }).click();
-  await expect(page.locator('[data-flight-quote]')).toHaveCount(2);
-  await page.reload();
-  await expect(page.locator('[data-flight-quote]')).toHaveCount(2);
-  await page.locator('#date-option').selectOption('');
+  await expect(page.locator('#date-option')).toBeDisabled();
   await expect(page.locator('[data-flight-quote]')).toHaveCount(3);
+  await expect(page.locator('[data-flight-quote]:visible')).toHaveCount(0);
+  await expect(page.locator('#flight-price-summary')).toContainText('12/10–13 尚待重查');
+  await page.locator('#flight-price-history summary').click();
+  await expect(page.locator('[data-flight-quote]:visible')).toHaveCount(3);
+  await expect(page.locator('#flight-price-filter')).toContainText('12/10–14');
+  await expect(page.locator('#flight-price-filter')).toContainText('不適用');
+  await page.reload();
+  await expect(page.locator('[data-flight-quote]:visible')).toHaveCount(0);
+  await page.locator('#tab-hotels').click();
+  await expect(page.locator('[data-hotel-rate]')).toHaveCount(10);
+  await expect(page.locator('[data-hotel-rate]:visible')).toHaveCount(0);
+  await page.locator('#hotel-price-history summary').click();
+  await expect(page.locator('[data-hotel-rate]:visible')).toHaveCount(10);
+  await expect(page.locator('#hotel-price-filter')).toContainText('4 晚');
 });
 
 test('price audit: four alternative hotel cases stay out of budget recommendations', async ({ page }) => {
   await page.goto('./#hotels');
+  await page.locator('#hotel-price-history summary').click();
   const alternative = page.locator('[data-hotel-rate][data-hotel-origin="alternative"]');
   await expect(alternative).toHaveCount(4);
   await expect(alternative.filter({ has: page.locator('[data-budget-state="over-cap-total-estimate"]') })).toHaveCount(2);
   await expect(alternative.filter({ has: page.locator('[data-budget-state="unknown"]') })).toHaveCount(2);
-  await expect(page.locator('#hotel-price-status')).toContainText('已查 10 筆');
-  await expect(page.locator('#hotel-price-status')).toContainText('4 筆所見價格超標');
+  await expect(page.locator('#hotel-price-status')).toContainText('0 筆已核實預算內');
+  await expect(page.locator('#hotel-price-status')).toContainText('舊四晚價格不沿用');
   await expect(page.locator('#hotel-price-audit')).toContainText('逐晚拆價未取得');
   for (const amount of ['749,700', '637,200']) await expect(page.locator('#hotel-price-audit')).toContainText(amount);
   for (const card of await alternative.all()) {
@@ -77,6 +85,7 @@ test('price audit: four alternative hotel cases stay out of budget recommendatio
 
 test('price audit: blocked official fare checks never acquire invented exact-date amounts', async ({ page }) => {
   await page.goto('./#flights');
+  await page.locator('#flight-price-history summary').click();
   await expect(page.locator('[data-airline-check]')).toHaveCount(4);
   await expect(page.locator('#airline-check-cards')).toContainText('Access Denied');
   const official = await page.evaluate(() => window.TRIP_PRICES.officialChecks);

@@ -1,0 +1,31 @@
+Creator: Hermes Agent
+Version: 1.0
+Purpose: public dated rate excerpt, not a booking
+Source: https://www.agoda.com/zh-tw/hotel-skypark-myeongdong-iii/hotel/seoul-kr.html?checkIn=2026-12-10&checkOut=2026-12-13&los=3&rooms=1&adults=1&children=0&currency=TWD
+Retrieved: 2026-11-02T14:30:33.196350+00:00
+Observed: 2026-12-10 to 2026-12-13; 1 adult, 1 room, 3 nights
+Scope: displayed average before taxes and fees; no dated nightly all-in breakdown
+
+Provider text excerpt:
+免費Wi-Fi
+
+查看詳情
+
+其他回饋和折扣
+
+金省專案
+
+這是我們的最低價！
+
+原價: NT$ 11,608
+NT$ 11,608
+4.3折
+NT$
+5,004
+每晚（不含稅及其他費用）
+1間客房
+立即預訂
+延後扣款
+延後扣款
+
+免費取消

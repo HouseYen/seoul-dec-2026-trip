@@ -72,7 +72,7 @@ test('round two: blocked clipboard has a manual-copy dialog with the stable URL'
   await page.getByRole('tab', { name: '機票比價', exact: true }).click();
   await page.locator('[data-copy-flight="2026-12-10"]').click();
   await expect(page.locator('#share-link-dialog')).toBeVisible();
-  await expect(page.locator('#share-link-input')).toHaveValue(/TPE→ICN 2026-12-10.*ICN→TPE 2026-12-14/);
+  await expect(page.locator('#share-link-input')).toHaveValue(/TPE→ICN 2026-12-10.*ICN→TPE 2026-12-13/);
 });
 
 test('round two: backup export, invalid import and confirmed restore preserve the exact ten IDs', async ({ page }) => {
@@ -100,7 +100,8 @@ test('round two: backup export, invalid import and confirmed restore preserve th
 });
 
 test('round two: ski choice and optional stops update exact segment endpoints', async ({ page }) => {
-  await page.goto('./#map-day-4');
+  await page.goto('./#map-day-3');
+  await page.locator('#shopping-plan').selectOption('snow');
   await page.locator('#snow-plan').selectOption('ski');
   let urls = await page.locator('#map-segments a[data-segment-link]').evaluateAll(nodes => nodes.map(a => decodeURIComponent(a.href)));
   expect(urls.some(url => url.includes('540'))).toBe(true);
@@ -124,7 +125,7 @@ test('round two: printing includes all days and tasks without changing active st
   await page.emulateMedia({ media: 'print' });
   await expect(page.locator('[role="tabpanel"]:visible')).toHaveCount(6);
   await expect(page.locator('.todo-item:visible')).toHaveCount(10);
-  await expect(page.locator('#all-days-map .all-day-card:visible')).toHaveCount(5);
+  await expect(page.locator('#all-days-map .all-day-card:visible')).toHaveCount(4);
   await expect(page.locator('#google-map')).toBeHidden();
   await page.emulateMedia({ media: 'screen' });
   await page.evaluate(() => window.dispatchEvent(new Event('afterprint')));

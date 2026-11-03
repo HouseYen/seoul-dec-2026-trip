@@ -1,8 +1,8 @@
 'use strict';
-// Public planning data only. Dates are candidates, not reservations.
+// Public planning data only. Dates are user-confirmed; bookings remain unconfirmed.
 window.TRIP_DATA = {
-  version: 'v2.2', reviewedOn: '2026-10-18', locationReviewedOn: '2026-11-02', daysCount: 5, nights: 4, hotelNightCap: 3000,
-  dateOptions: ['2026-12-03', '2026-12-10'],
+  version: 'v3.0', revisedOn: '2026-11-02', confirmedStart: '2026-12-10', confirmedEnd: '2026-12-13', reviewedOn: '2026-10-18', locationReviewedOn: '2026-11-02', daysCount: 4, nights: 3, hotelNightCap: 3000,
+  dateOptions: ['2026-12-10'],
   sources: [
     { id: 57, title: 'Toyoko Inn｜首爾江南官方位置', url: 'https://www.toyoko-inn.com/eng/search/detail/00282', note: '2026-11-02核對地址與車站指引；未重查指定日期空房或價格。' },
     { id: 58, title: '東大門No.2｜官方電梯步行指引', url: 'https://www.toyoko-inn.com/eng/search/detail/00291/access', note: '2026-11-02讀取1號出口電梯繞行圖文；出發前再核可用狀態。' },
@@ -56,37 +56,37 @@ window.TRIP_DATA = {
       main: '上午景福宮，下午仁寺洞喝熱飲。廣藏市場只挑一樣小吃，晚餐再找烤魚；不把每站都吃成正餐。',
       food: '市場飯捲／綠豆煎餅，熟食海鮮選烤魚街；每店先問一人份與最低點餐量。',
       optional: '汗蒸幕 SPAREX 是替換晚間逛街的選項，不是再多塞一個行程。',
-      exit: '景福宮 11–12 月 09:00–17:00、最後入場 16:00；一般週二休。兩組候選的 DAY 2 都是週五，出發前仍複查。', refs: [1, 21, 6, 4] },
+      exit: '景福宮 11–12 月 09:00–17:00、最後入場 16:00；一般週二休。12/11 DAY 2 是週五，出發前仍複查。', refs: [1, 21, 6, 4] },
     { id: 3, title: '弘大到延南洞，把購物排在一起', region: '弘大・延南洞', route: '弘大入口站 → Olive Young 弘大 Town → 延南洞咖啡散步。',
       main: '今天專心逛一區。衣服、鞋子、文具自由挑，不加另一個跨城景點。',
       food: '優先單人湯飯、拌飯、麵食；辣炒雞排常見分享式，先問是否接單人，不預設一定能點。',
       optional: '想換風格就用聖水半日「替換」弘大；兩區不硬塞同一天。',
       exit: '天冷時縮短延南洞步行，選一間咖啡店坐著。購物後先回飯店放東西。', refs: [19, 23] },
-    { id: 4, title: '雪具只挑重點，海鮮留作加選', region: '江南；鷺梁津可選', route: '單板先 Best Snowboard；雙板／雪鞋改 Montana。一次只挑 1–2 家。',
+    { id: 4, title: '帶著餘裕回家，不再加遠程點', region: '住宿區 → 機場', route: '住宿 → 首爾站 → 仁川機場；實際接駁依航班與航廈確認。',
+      main: '依航班倒推退房、交通、退稅與報到。這份規劃建議保守抓起飛前約 3 小時抵達機場，仍以航空公司規定為準。',
+      food: '早餐吃完再出發，回程不為了排隊名店壓縮緩衝。',
+      optional: '回程日只回機場，不安排購物必達；所有緩衝留給交通與報到。',
+      exit: '確認 T1／T2、行李重量與護照。早班先查首班車，不假設機場鐵路一定趕得上。', refs: [] }
+  ],
+  snowDay: { id: 'snow', title: '雪具只挑重點，海鮮留作加選', region: '江南；鷺梁津可選', route: '單板先 Best Snowboard；雙板／雪鞋改 Montana。一次只挑 1–2 家。',
       main: '主線先走地址已核實的 Best Snowboard。買雙板／雪鞋則換 Montana；地圖可切換。先問營業、尺寸、試穿與運送。',
       food: '精力足才去鷺梁津；先談食材＋料理費與單人份。不合就回住宿區找熟食，不另外跨去昨天的烤魚街。',
       optional: '要逛第二家時先核實現址與營業。Board Korea／Gangnam Sports 暫不列必達導航。',
       exit: '半天採買留休息，不扛大袋硬逛市場。大件雪板先核對航空運動器材與超尺寸規定。', refs: [15, 14, 24] },
-    { id: 5, title: '帶著餘裕回家，不再加遠程點', region: '住宿區 → 機場', route: '住宿 → 首爾站 → 仁川機場；實際接駁依航班與航廈確認。',
-      main: '依航班倒推退房、交通、退稅與報到。這份規劃建議保守抓起飛前約 3 小時抵達機場，仍以航空公司規定為準。',
-      food: '早餐吃完再出發，回程不為了排隊名店壓縮緩衝。',
-      optional: '只有晚班且時間足夠才在住宿區補貨；不另外跨區。',
-      exit: '確認 T1／T2、行李重量與護照。早班先查首班車，不假設機場鐵路一定趕得上。', refs: [] }
-  ],
   backups: [
-    { title: '文化雨備｜國立中央博物館', tag: '替換 DAY 2 或 DAY 4 主線', text: '想少走戶外時改選室內展館，不額外疊加古宮／雪具。常設展一般免費，特展另看。注意 12/7（一）依現行規則常設與特展區休館，不排在第一組回程日。', query: '국립중앙박물관 서울', refs: [7] },
-    { title: '室內備案｜COEX 星空圖書館', tag: '替換 DAY 4 雪具購物', text: '不買雪具或天氣不佳，改成 COEX 室內逛街與閱讀空間；不是雪具逛完再加一個遠程大點。', query: '별마당 도서관 스타필드 코엑스몰 서울', refs: [22] },
+    { title: '文化雨備｜國立中央博物館', tag: '替換 DAY 2 或 DAY 3 主線', text: '想少走戶外時改選室內展館，不額外疊加古宮／雪具。常設展一般免費，特展另看。實際出發日休館與特展公告仍須重查。', query: '국립중앙박물관 서울', refs: [7] },
+    { title: '室內備案｜COEX 星空圖書館', tag: '替換 DAY 3 江南雪具主線', text: '不買雪具或天氣不佳，改成 COEX 室內逛街與閱讀空間；不是雪具逛完再加一個遠程大點。', query: '별마당 도서관 스타필드 코엑스몰 서울', refs: [22] },
     { title: '購物替案｜聖水洞', tag: '替換 DAY 3 弘大半日', text: '比較想看品牌店與咖啡空間，就選聖水取代弘大。非純室內雨備；快閃檔期另查，不把舊活動當作這趟保證。', query: '성수동 서울', refs: [23] }
   ],
   places: [
     { id: 'kyoja', category: 'food', title: '明洞餃子', tag: 'DAY 1／明洞基地順路', text: '熱麵與餃子方向。抵達日先吃飽，不為名店跨區；當日菜單與單人點餐現場確認。', query: '명동교자 본점 서울', refs: [20] },
     { id: 'gwangjang', category: 'food', title: '廣藏市場', tag: 'DAY 2／小吃不是第二頓正餐', text: '飯捲、綠豆煎餅等小吃，先一份再決定要不要加；攤位營業與價格現場確認。', query: '광장시장 서울 종로구', refs: [21] },
     { id: 'grilled-fish', category: 'food', title: '東大門烤魚街', tag: 'DAY 2／熟食海鮮選項', text: '找烤魚套餐，先問一人份與總額。官方街區介紹較舊，這版不沿用文中的舊餐價。', query: '동대문 생선구이 골목 서울', refs: [6] },
-    { id: 'noryangjin', category: 'food', title: '鷺梁津水產市場', tag: 'DAY 4／有餘力才去', text: '先問單人份與食材、料理、其他費用總額再買；想吃牡蠣也先問當日來源和熟食做法，不承諾供應。', address: '서울특별시 동작구 노들로 674', query: '노량진수산물도매시장 서울 동작구 노들로 674', refs: [24] },
+    { id: 'noryangjin', category: 'food', title: '鷺梁津水產市場', tag: 'DAY 3 江南主線／有餘力才去', text: '先問單人份與食材、料理、其他費用總額再買；想吃牡蠣也先問當日來源和熟食做法，不承諾供應。', address: '서울특별시 동작구 노들로 674', query: '노량진수산물도매시장 서울 동작구 노들로 674', refs: [24] },
     { id: 'oy-myeongdong', category: 'beauty', title: 'Olive Young 明洞 Town', tag: 'DAY 1／明洞基地可主採買', text: '主採買安排一次即可。官方 CJ ONE 店址資料已核實，營業與活動出發前重查。', address: '서울특별시 중구 명동길 53 1~2층', query: '올리브영 명동 타운 서울 중구 명동길 53', refs: [18] },
     { id: 'oy-hongdae', category: 'beauty', title: 'Olive Young 弘大 Town', tag: 'DAY 3／順逛補貨', text: '在弘大到延南洞的同區行程順訪；如果明洞已買齊，不再安排第二場大採買。', address: '서울특별시 마포구 홍익로6길 57', query: '올리브영 홍대 타운 서울 마포구 홍익로6길 57', refs: [19] },
-    { id: 'best', category: 'snow', title: 'Best Snowboard', tag: 'DAY 4／單板零售優先', text: '地址已核實。單板、服飾與裝備採買方向；出發前確認尺寸現貨與試穿，不是雪場租借。', address: '서울특별시 강남구 논현로 622 금은빌딩 1층', query: '베스트스노우보드 서울 강남구 논현로 622', phone: '02-511-5114', refs: [15] },
-    { id: 'montana', category: 'snow', title: 'Montana Sports', tag: 'DAY 4／雙板與雪鞋零售', text: '地址已核實；12 月營業時段未核實，不外推官網其他月份時段。想買雙板／雪鞋可替換 Best 作主力店。', address: '서울 강남구 언주로 540 코원타워 1층', query: '몬타나스포츠 서울 강남구 언주로 540', phone: '02-566-8007', refs: [14] },
+    { id: 'best', category: 'snow', title: 'Best Snowboard', tag: 'DAY 3 江南主線／單板零售優先', text: '地址已核實。單板、服飾與裝備採買方向；出發前確認尺寸現貨與試穿，不是雪場租借。', address: '서울특별시 강남구 논현로 622 금은빌딩 1층', query: '베스트스노우보드 서울 강남구 논현로 622', phone: '02-511-5114', refs: [15] },
+    { id: 'montana', category: 'snow', title: 'Montana Sports', tag: 'DAY 3 江南主線／雙板與雪鞋零售', text: '地址已核實；12 月營業時段未核實，不外推官網其他月份時段。想買雙板／雪鞋可替換 Best 作主力店。', address: '서울 강남구 언주로 540 코원타워 1층', query: '몬타나스포츠 서울 강남구 언주로 540', phone: '02-566-8007', refs: [14] },
     { id: 'board', category: 'snow', title: 'Board Korea 江南店', tag: '零售候選／店址與時間待核', text: '628 號沿用舊資料，本次未成功讀取現行官網核實；分店休息日可能錯套，已移除「江南週一、二休」。未確認前不列預設路線。', address: '待核：서울 강남구 논현로 628', query: '보드코리아 강남 논현로 628', website: 'https://www.boardkorea.com/', refs: [], pending: true },
     { id: 'gangnam', category: 'snow', title: 'Gangnam Sports', tag: '零售候選／現址待電話核實', text: '524 號目前只有官網搜尋索引，不能當成已讀現行店址；也不導回舊 637。未核實前不列必達店。', address: '待核：서울 강남구 논현로 524', query: '강남스포츠 논현로 524 서울', website: 'http://gangnamsports.co.kr/', refs: [], pending: true },
     { id: 'sparex', category: 'relax', title: 'SPAREX 東大門汗蒸幕', tag: 'DAY 2／晚間逛街替案', text: 'Seoul PASS 刊載日間 ₩14,000、成人夜間 ₩15,900 與 24 小時資訊；只是票務平台觀察，不是 12 月承諾。查好票種、清潔限制與入場方式再去。', address: 'Goodmorning City B3, 247 Jangchungdan-ro, Jung-gu, Seoul', query: '스파렉스 굿모닝시티 서울 장충단로 247', refs: [4] }
@@ -94,14 +94,14 @@ window.TRIP_DATA = {
   hotels: [
     { title: 'Toyoko Inn Seoul Dongdaemun No.1', tag: '正式商務飯店／不是預算保證', address: '337, Toegye-ro, Jung-gu, Seoul', text: '官方列免費早餐與房內衛浴設備；先查單人可住的整間房。房型、取消與晚到條款依指定日期確認。', query: '토요코인 서울 동대문1 서울 퇴계로 337', refs: [11] },
     { title: 'Toyoko Inn Seoul Dongdaemun No.2', tag: '同品牌備選／別混門牌', address: '325, Toegye-ro, Jung-gu, Seoul', text: '官方列免費早餐與房內衛浴設備。No.1／No.2 是不同飯店，訂房名稱、地址與地圖要一致。', query: '토요코인 서울 동대문2 서울 퇴계로 325', refs: [12] },
-    { title: 'Travelodge Dongdaemun Seoul', tag: '本次價格超預算／不列合格推薦', address: '359 Dongho-ro, Jung-gu, Seoul', text: '官方明列 Standard Single 單人床房型與此地址。飯店身分和房型介紹不等於指定日期預算達標，逐晚價格另列下方。', query: '트래블로지 동대문 서울 동호로 359', refs: [13] }
+    { title: 'Travelodge Dongdaemun Seoul', tag: '新日期價格待查／不是預算保證', address: '359 Dongho-ro, Jung-gu, Seoul', text: '官方明列 Standard Single 單人床房型與此地址。飯店身分和房型介紹不等於指定日期預算達標，逐晚價格另列下方。', query: '트래블로지 동대문 서울 동호로 359', refs: [13] }
   ],
   todoGroups: [
     { id: 'now', title: '現在先完成｜行程定案', items: [
-      { id: 'dates', title: '選定出發日期', text: '12/3–7 或 12/10–14，選擇五天四夜；上方選單不會自動替這項打勾。' },
+      { id: 'dates', title: '核對已確定的出發日期', text: '已確定 2026/12/10–12/13 四天三夜；日期由使用者提供，不會自動替這項打勾。' },
       { id: 'flight', title: '確認並預訂來回機票', text: 'TPE ⇄ ICN，核對去回時間、直飛與兩段托運後總價；別只看裸票。' },
       { id: 'hotel', title: '選住宿區域並訂房', text: '正式飯店、1 成人整間房、逐晚含稅 ≤ NT$3,000；確認取消、衛浴與晚到入住。' },
-      { id: 'budget', title: '訂全程預算上限', text: '分開列機票、四晚住宿、交通、餐飲、購物、保險及備用金。' }
+      { id: 'budget', title: '訂全程預算上限', text: '分開列機票、三晚住宿、交通、餐飲、購物、保險及備用金。' }
     ] },
     { id: 'before', title: '出發前準備｜交通與收尾', items: [
       { id: 'transfer', title: '定稿機場往返交通', text: '依飯店、航班、T1／T2 查首末班與轉乘；早晚班另備接駁方案。' },

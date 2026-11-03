@@ -4,8 +4,10 @@ test.beforeEach(async ({ page }) => {
   await page.route('https://www.google.com/maps?**', route => route.fulfill({ contentType: 'text/html', body: '<html lang="en"><title>Maps isolated</title><body>External map isolated</body></html>' }));
 });
 
-test('Toyoko location comparison: four exact branches, five-day fit and separate freshness', async ({ page }, testInfo) => {
+test('Toyoko location comparison: four exact branches, four-day fit and separate freshness', async ({ page }, testInfo) => {
   await page.goto('./#hotels');
+  await expect(page.locator('[data-toyoko-hotel]:visible')).toHaveCount(0);
+  await page.locator('#toyoko-location-history summary').click();
   const section = page.locator('#toyoko-location-comparison');
   await expect(section).toBeVisible();
   const cards = section.locator('[data-toyoko-hotel]');
@@ -23,12 +25,12 @@ test('Toyoko location comparison: four exact branches, five-day fit and separate
     expect(official.hostname).toBe('www.toyoko-inn.com');
     expect(official.pathname).toContain('/' + id);
   }
-  await expect(section.locator('[data-toyoko-day]')).toHaveCount(5);
+  await expect(section.locator('[data-toyoko-day]')).toHaveCount(4);
   await expect(section).toContainText('2026-11-02');
   await expect(section).toContainText('沒有重新查價');
   await expect(section).toContainText('不代表已訂房');
   await expect(section).toContainText('1號出口電梯');
-  await expect(section).toContainText('No.1幾乎同級');
+  await expect(section).toContainText('非目前指定推薦');
   await expect(page.locator('#hotel-price-title')).toContainText('2026-10-18');
   await expect(page.locator('[data-hotel-rate]')).toHaveCount(10);
   for (const href of await section.locator('.citation').evaluateAll(nodes => nodes.map(n => n.getAttribute('href')))) {
@@ -46,9 +48,9 @@ test('Toyoko location comparison never changes saved lodging, date or checklist 
     }
   });
   await page.goto('./#hotels');
-  await expect(page.locator('#toyoko-location-comparison')).toBeVisible();
+  await expect(page.locator('#toyoko-location-comparison')).toBeHidden();
   await expect(page.locator('#stay-area')).toHaveValue('myeongdong');
-  await page.locator('#date-option').selectOption('2026-12-10');
+  await expect(page.locator('#date-option')).toHaveValue('2026-12-10');
   await expect(page.locator('[data-toyoko-hotel]')).toHaveCount(4);
   await page.reload();
   await expect(page.locator('#stay-area')).toHaveValue('myeongdong');

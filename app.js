@@ -2,11 +2,12 @@
 (() => {
   const data = window.TRIP_DATA;
   const prices = window.TRIP_PRICES;
+  const currentHotels = window.TRIP_CURRENT_HOTELS;
   const byId = id => document.getElementById(id);
   const all = selector => Array.from(document.querySelectorAll(selector));
   const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
   const external = 'target="_blank" rel="noopener noreferrer"';
-  const sourceById = new Map([...data.sources, ...prices.sources].map(source => [source.id, source]));
+  const sourceById = new Map([...data.sources, ...prices.sources, ...currentHotels.sources].map(source => [source.id, source]));
   const todoKey = 'seoul-trip-todos-v1';
   const preferencesKey = 'seoul-trip-preferences-v2';
   const tabs = ['itinerary', 'map', 'places', 'hotels', 'flights', 'todos'];
@@ -37,9 +38,10 @@
   }
   const storedPreferences = readJSON(preferencesKey);
   let preferences = {
-    date: data.dateOptions.includes(storedPreferences.date) ? storedPreferences.date : '',
+    date: data.confirmedStart,
     base: Object.hasOwn(data.bases, storedPreferences.base) ? storedPreferences.base : 'myeongdong',
-    snow: storedPreferences.snow === 'ski' ? 'ski' : 'snowboard'
+    snow: storedPreferences.snow === 'ski' ? 'ski' : 'snowboard',
+    shopping: storedPreferences.shopping === 'snow' ? 'snow' : 'hongdae'
   };
   const initialTodos = readJSON(todoKey);
   const todoIds = data.todoGroups.flatMap(group => group.items.map(item => item.id));
@@ -65,13 +67,16 @@
     return `${date.getUTCMonth() + 1}/${date.getUTCDate()}（${'日一二三四五六'[date.getUTCDay()]}）`;
   }
   function dayDate(day) { return preferences.date ? formatDate(dateFor(day)) : '日期待定'; }
+  function currentDay(day) {
+    return day.id === 3 && preferences.shopping === 'snow' ? { ...data.snowDay, id: 3 } : day;
+  }
   function renderDays() {
-    byId('day-cards').innerHTML = data.days.map(day => `<article class="day-card" id="day-${day.id}">
+    byId('day-cards').innerHTML = data.days.map(currentDay).map(day => `<article class="day-card" id="day-${day.id}">
       <div class="day-rail"><span class="day-label">DAY</span><strong>${String(day.id).padStart(2, '0')}</strong><time data-day-date="${day.id}"${preferences.date ? ` datetime="${dateFor(day.id).toISOString().slice(0, 10)}"` : ''}>${dayDate(day.id)}</time></div>
-      <div class="day-content"><div class="day-title-row"><h3>${escapeHTML(day.title)}</h3><span class="day-region">${escapeHTML(day.region)}</span></div><p class="route-text">${escapeHTML(day.id === 1 ? (preferences.base === 'myeongdong' ? day.route : '仁川機場 → 首爾站 → 東大門住宿；當天就近吃飯休息，不繞明洞。') : day.id === 4 ? (preferences.snow === 'ski' ? '本趟主力：Montana Sports（雙板／雪鞋）；其他店不硬加。' : '本趟主力：Best Snowboard（單板）；其他店不硬加。') : day.route)}</p>
-      <div class="day-blocks"><p><span class="block-label">今天的主線</span>${escapeHTML(day.main)}</p><p><span class="block-label">單人吃飯</span>${escapeHTML(day.food)}</p><p><span class="block-label">加選／替換</span>${escapeHTML(day.optional)}</p><p><span class="block-label">退場與緩衝</span>${escapeHTML(day.exit)}${cite(day.refs)}</p></div>
+      <div class="day-content"><div class="day-title-row"><h3>${escapeHTML(day.title)}</h3><span class="day-region">${escapeHTML(day.region)}</span></div><p class="route-text">${escapeHTML(day.id === 1 ? (preferences.base === 'myeongdong' ? day.route : '仁川機場 → 首爾站 → 東大門住宿；當天就近吃飯休息，不繞明洞。') : day.id === 3 && preferences.shopping === 'snow' ? (preferences.snow === 'ski' ? '本趟主力：Montana Sports（雙板／雪鞋）；其他店不硬加。' : '本趟主力：Best Snowboard（單板）；其他店不硬加。') : day.route)}</p>
+      <div class="day-blocks"><p><span class="block-label">今天的主線</span>${escapeHTML(day.id === 3 && preferences.shopping === 'snow' ? (preferences.snow === 'ski' ? '主線只選 Montana Sports（雙板／雪鞋）；先問營業、尺寸、試穿與運送。' : '主線只選 Best Snowboard（單板）；先問營業、尺寸、試穿與運送。') : day.main)}</p><p><span class="block-label">單人吃飯</span>${escapeHTML(day.food)}</p><p><span class="block-label">加選／替換</span>${escapeHTML(day.optional)}</p><p><span class="block-label">退場與緩衝</span>${escapeHTML(day.exit)}${cite(day.refs)}</p></div>
       <div class="day-bottom"><p>不趕路，不把備案變成必做清單。</p><button class="day-map-button" type="button" data-show-day="${day.id}">查看 DAY ${day.id} 分段地圖 ↗</button></div></div></article>`).join('');
-    byId('date-summary').textContent = preferences.date ? `${formatDate(dateFor(1))}–${formatDate(dateFor(data.daysCount))} · 5 天 4 夜` : '5 天 4 夜 · 候選日期未定案';
+    byId('date-summary').textContent = preferences.date ? `${formatDate(dateFor(1))}–${formatDate(dateFor(data.daysCount))} · 4 天 3 夜` : '4 天 3 夜 · 日期已確定';
   }
   function renderBackups() {
     byId('backup-cards').innerHTML = data.backups.map(item => `<article class="card"><span class="card-kicker">${escapeHTML(item.tag)}</span><h3>${escapeHTML(item.title)}</h3><p>${escapeHTML(item.text)}${cite(item.refs)}</p><a href="${searchURL(item.query)}" ${external}>Google Maps 地點搜尋 ↗</a></article>`).join('');
@@ -94,7 +99,7 @@
     byId('flight-cards').innerHTML = data.dateOptions.map((start, i) => {
       const end = dateFor(data.daysCount, start).toISOString().slice(0, 10);
       const href = 'https://www.google.com/travel/flights?hl=zh-TW&gl=TW&curr=TWD';
-      return `<article class="card"><span class="card-kicker">日期方案 ${i + 1}／未訂位</span><h3 class="flight-dates">${formatDate(dateFor(1, start))}–${formatDate(dateFor(data.daysCount, start))}</h3><ul class="flight-facts"><li>TPE → ICN／ICN → TPE</li><li>5 個日曆日・4 晚・跨週末</li><li>1 成人・經濟艙・直飛</li><li>比較基準：去回各至少 20 kg 托運（規劃假設）</li><li>航空官網最後復價與票種條款：待確認</li></ul><button class="button primary" type="button" data-copy-flight="${start}">複製這組查票條件</button><div class="card-links"><a data-flight-search data-departure="${start}" data-return="${end}" href="${escapeHTML(href)}" ${external}>開啟 Google Flights（手動填條件）↗</a></div><p class="fineprint">上方為手動查詢入口，不預填日期；下方觀察價另有已選定去回航班的來源。都不代表保留座位。</p></article>`;
+      return `<article class="card"><span class="card-kicker">已確定日期／未訂位</span><h3 class="flight-dates">${formatDate(dateFor(1, start))}–${formatDate(dateFor(data.daysCount, start))}</h3><ul class="flight-facts"><li>TPE → ICN／ICN → TPE</li><li>4 個日曆日・3 晚・跨週末</li><li>1 成人・經濟艙・直飛</li><li>比較基準：去回各至少 20 kg 托運（規劃假設）</li><li>航空官網最後復價與票種條款：待確認</li></ul><button class="button primary" type="button" data-copy-flight="${start}">複製這組查票條件</button><div class="card-links"><a data-flight-search data-departure="${start}" data-return="${end}" href="${escapeHTML(href)}" ${external}>開啟 Google Flights（手動填條件）↗</a></div><p class="fineprint">上方為手動查詢入口，不預填日期；下方收合區僅保留舊日期歷史觀察，不適用新日期。都不代表保留座位。</p></article>`;
     }).join('');
     byId('asiana-citation').innerHTML = cite([9]);
   }
@@ -106,14 +111,15 @@
     return new Date(value).toLocaleString('zh-TW', { timeZone: 'Asia/Taipei', hour12: false });
   }
   function renderPrices() {
-    const visibleHotels = prices.hotels.filter(item => !preferences.date || item.checkin === preferences.date);
-    const visibleFlights = prices.flights.filter(item => !preferences.date || item.outbound_date === preferences.date);
-    const visibleOfficial = prices.officialChecks.filter(item => !preferences.date || item.outbound_date === preferences.date);
+    const visibleHotels = prices.hotels;
+    const visibleFlights = prices.flights;
+    const visibleOfficial = prices.officialChecks;
     const unknown = prices.hotels.filter(item => item.budget_state === 'unknown').length;
     const over = prices.hotels.filter(item => item.budget_state.startsWith('over-cap')).length;
     const within = prices.hotels.filter(item => item.budget_state === 'within-cap-estimate').length;
-    byId('hotel-price-status').innerHTML = `<strong>${within ? '有依參考匯率落在預算內的觀察方案，仍須最後復核。' : '本次仍未核實到逐晚含稅合格的可訂房價。'}</strong> 已查 ${prices.hotels.length} 筆：${unknown} 筆未取得合格報價、${over} 筆所見價格超標、${within} 筆依參考匯率在上限內。不是所有通路售罄；未確認的房型與稅費不視為合格。`;
-    const filterText = preferences.date ? `目前顯示 ${quoteDate(preferences.date, dateFor(data.daysCount, preferences.date).toISOString().slice(0, 10))}；可用上方候選日期切換。` : '目前顯示兩組候選日期；上方選定日期可同步篩選飯店與機票觀察。';
+    byId('hotel-price-status').textContent = `2026/12/10–13 已查 ${currentHotels.records.length} 筆同日期公開方案：所見平均每晚未稅價都超過 NT$3,000，0 筆已核實預算內。逐晚含稅與三晚總額均未取得；這不代表其他通路都沒有便宜房。舊四晚價格不沿用。`;
+    byId('hotel-current-rates').innerHTML = currentHotels.records.map(item => `<article class="card" data-current-hotel="${escapeHTML(item.id)}"><span class="card-kicker">2026/12/10–13 · 1成人1房3晚</span><h4>${escapeHTML(item.hotel)}</h4><p class="address">${escapeHTML(item.address)}</p><p>${escapeHTML(item.classification)}；房型：${escapeHTML(item.room_type)}；私人衛浴：已核實；禁菸：${item.non_smoking === true ? '方案標示禁菸' : '此方案未核實'}</p><p><strong>平均每晚未稅觀察價：${money(item.displayed_average_before_tax_twd)}</strong>；已超過每晚預算上限（此方案排除）</p><p>逐晚含稅：未取得；三晚含稅總額：未取得。平均未稅價不能當成交總價，也不能推算每晚金額。</p><p>早餐：${escapeHTML(item.breakfast)}；取消：${escapeHTML(item.cancellation)}；付款：${escapeHTML(item.payment)}</p><p class="fineprint">${escapeHTML(item.budget_note)} 查核：${escapeHTML(observedAt(item.retrieved_at))} 台北時間。${cite(item.refs)}</p><div class="card-links"><a href="${escapeHTML(item.source_url)}" ${external}>重新查同日期 ↗</a><a href="${escapeHTML(item.identity_url)}" ${external}>飯店身分／地址來源 ↗</a><a href="${escapeHTML(item.evidence)}" ${external}>公開摘錄 ↗</a></div></article>`).join('');
+    const filterText = '歷史快照：2026/12/3–7 或 12/10–14，均為 4 晚；2026-10-18 查核。不適用已確定的 12/10–13 三晚旅程。';
     byId('hotel-price-filter').textContent = filterText;
     byId('flight-price-filter').textContent = filterText;
     byId('hotel-rate-cards').innerHTML = visibleHotels.map(item => {
@@ -124,9 +130,7 @@
       return `<article class="card" data-hotel-rate="${escapeHTML(item.id)}" data-hotel-origin="${escapeHTML(item.origin)}"><span class="card-kicker">${escapeHTML(quoteDate(item.checkin, item.checkout))}</span><h4>${escapeHTML(item.hotel)}</h4>${item.location_note ? `<p>${escapeHTML(item.location_note)}</p>` : ''}<p data-budget-state="${escapeHTML(item.budget_state)}"><strong>${label}</strong></p><p>${escapeHTML(item.budget_note)}</p><p>房型：${escapeHTML(item.room_type || '未取得指定日期房型')}；1 成人・1 房・4 晚</p>${item.rate_name ? `<p>方案：${escapeHTML(item.rate_name)}</p>` : ''}${nightly}<p>${escapeHTML(item.tax_scope)}</p>${tax}<p data-hotel-total><strong>四晚所見總額：${money(item.total_amount, item.currency)}</strong></p>${estimate}<p>取消條款：${escapeHTML(item.cancellation)}</p><p class="fineprint">查核：${escapeHTML(observedAt(item.retrieved_at))} 台北時間。${cite(item.refs)}</p><div class="card-links"><a href="${escapeHTML(item.source_url)}" ${external}>重新查此日期／條件需核對 ↗</a><a href="${escapeHTML(item.evidence)}" ${external}>當次查核摘錄 ↗</a></div></article>`;
     }).join('');
     byId('hotel-fx-note').innerHTML = `所有 KRW 估值統一使用 Xe 參考匯率：1 KRW = ${prices.exchangeRate.twd_per_krw} TWD；來源時間 ${escapeHTML(prices.exchangeRate.source_as_of)}。換算更新不代表飯店已再次復價，也不是刷卡匯率；銀行、付款及其他現場費用需另核。${cite([prices.exchangeRate.source_id])}`;
-    const first = prices.flights.find(item => item.id === 'a-afternoon-return');
-    const second = prices.flights.find(item => item.id === 'b-afternoon-return');
-    byId('flight-price-summary').innerHTML = `<strong>這批已觀察行程，先看 12/3–7 晚去午回。</strong> 韓亞 17:05 去／13:50 回的來回觀察價 ${money(first.observed_total)}，比下一週相同起降時段少 ${money(prices.differences_twd.b_afternoon_minus_a_afternoon)}。${cite([first.source_id, second.source_id])}這是兩組日期的觀察差額，不是航空官網保價，也未包含尚未合格的住宿成本。`;
+    byId('flight-price-summary').textContent = '2026/12/10–13 尚待重查；尚未取得新日期航空官網同條件票價，不沿用舊日期觀察價，也不推薦舊日期。';
     byId('flight-quote-cards').innerHTML = visibleFlights.map(item => `<article class="card" data-flight-quote="${escapeHTML(item.id)}"><span class="card-kicker">已觀察／官網未復價</span><h4>${escapeHTML(quoteDate(item.outbound_date, item.return_date))}</h4><p class="quote-price" data-quote-price>${money(item.observed_total, item.currency)}</p><p>每人來回觀察價・韓亞・1 成人經濟艙・TPE ⇄ ICN・兩段直飛</p><ul class="rate-lines"><li>去程 ${escapeHTML(item.outbound_local)}</li><li>回程 ${escapeHTML(item.return_local)}</li><li>時間為各機場當地時間</li><li>行程頁標示兩段首件托運免費</li></ul><p>重量另依一般非美線規則為 23 kg；所選票種、雪具及最後稅費／付款費仍未復價。${cite(item.refs)}</p><p class="fineprint">觀察：${escapeHTML(observedAt(item.retrieved_at))} 台北時間；不是已訂位或保證可成交價格。</p><div class="card-links"><a data-price-source href="${escapeHTML(item.source_url)}" ${external}>查看選定去回行程來源 ↗</a><a href="${escapeHTML(item.evidence)}" ${external}>當次查核摘錄 ↗</a></div></article>`).join('');
     byId('airline-check-cards').innerHTML = visibleOfficial.map(item => `<article class="card" data-airline-check="${escapeHTML(item.id)}"><span class="card-kicker">${escapeHTML(item.carrier)}／官方引擎查核</span><h4>${escapeHTML(quoteDate(item.outbound_date, item.return_date))}</h4><p>${escapeHTML(item.reason)}</p>${item.references.length ? '<p>官方日曆的範例返程日期不符，已排除，不挪用作這組報價。</p>' : ''}<p class="fineprint">查核：${escapeHTML(observedAt(item.retrieved_at))} 台北時間。</p><div class="card-links"><a href="${escapeHTML(item.source_url)}" ${external}>官方手動查票入口 ↗</a><a href="${escapeHTML(item.evidence)}" ${external}>阻塞紀錄 ↗</a></div></article>`).join('');
   }
@@ -172,9 +176,10 @@
     switch (String(day)) {
       case '1': return [stop('airport'), stop('seoul'), base, ...(preferences.base === 'myeongdong' ? [stop('myeongdongOY', 'walking'), { ...base, mode: 'walking' }] : [])];
       case '2': return [base, stop('palace'), stop('insa', 'walking'), stop('market'), stop('fish', 'walking'), ...(optional ? [stop('sparex', 'walking')] : []), base];
-      case '3': return [base, stop('hongik'), stop('hongdaeOY', 'walking'), stop('yeonnam', 'walking'), base];
-      case '4': return [base, stop(preferences.snow === 'ski' ? 'montana' : 'best'), ...(optional ? [stop('seafood')] : []), base];
-      case '5': return [base, stop('seoul'), stop('airport')];
+      case '3': return preferences.shopping === 'snow'
+        ? [base, stop(preferences.snow === 'ski' ? 'montana' : 'best'), ...(optional ? [stop('seafood')] : []), base]
+        : [base, stop('hongik'), stop('hongdaeOY', 'walking'), stop('yeonnam', 'walking'), base];
+      case '4': return [base, stop('seoul'), stop('airport')];
       default: return [];
     }
   }
@@ -183,7 +188,7 @@
     return nodes.slice(1).map((to, index) => ({ from: nodes[index], to, mode: to.mode }));
   }
   function renderAllDays() {
-    byId('all-days-map').innerHTML = data.days.map(day => `<article class="card all-day-card"><span class="card-kicker">DAY ${day.id} · ${dayDate(day.id)}</span><h3>${escapeHTML(day.title)}</h3><ol>${routeNodes(day.id).map(node => `<li><a href="${searchURL(node.query)}" ${external}>${escapeHTML(node.name)}</a></li>`).join('')}</ol><button class="button outline" type="button" data-show-day="${day.id}">看這天的分段導航 ↗</button></article>`).join('');
+    byId('all-days-map').innerHTML = data.days.map(currentDay).map(day => `<article class="card all-day-card"><span class="card-kicker">DAY ${day.id} · ${dayDate(day.id)}</span><h3>${escapeHTML(day.title)}</h3><ol>${routeNodes(day.id).map(node => `<li><a href="${searchURL(node.query)}" ${external}>${escapeHTML(node.name)}</a></li>`).join('')}</ol><button class="button outline" type="button" data-show-day="${day.id}">看這天的分段導航 ↗</button></article>`).join('');
   }
   function previewSegment(index) {
     const segments = segmentsFor(mapDay);
@@ -204,7 +209,7 @@
     byId('map-current').hidden = isAll;
     byId('all-days-map').hidden = !isAll;
     if (isAll) { renderAllDays(); return; }
-    const day = data.days.find(item => String(item.id) === mapDay);
+    const day = currentDay(data.days.find(item => String(item.id) === mapDay));
     byId('map-day-title').textContent = `DAY ${mapDay} · ${dayDate(Number(mapDay))} · ${day.title}`;
     byId('map-day-note').textContent = byId('include-optional').checked ? '含加選路線；累了可刪掉汗蒸幕／海鮮市場，不必全部跑。' : '只顯示主線。選勾上方選項才加入汗蒸幕／海鮮市場。';
     byId('map-segments').innerHTML = segmentsFor(mapDay).map((segment, index) => `<li class="segment-card"><strong><span class="segment-mode">${String(index + 1).padStart(2, '0')} / ${segment.mode === 'walking' ? '步行' : '大眾運輸'}</span>${escapeHTML(segment.from.name)} → ${escapeHTML(segment.to.name)}</strong><div class="segment-actions"><a data-segment-link href="${directionURL(segment.from, segment.to, segment.mode)}" ${external}>開啟這一段導航 ↗</a><button type="button" data-preview-segment="${index}" aria-pressed="false">預覽這一段</button></div></li>`).join('');
@@ -219,7 +224,7 @@
     try { hash = decodeURIComponent(location.hash.slice(1)); } catch { hash = ''; }
     if (hash.startsWith('source-') && byId(hash)) { byId('sources').open = true; return; }
     const match = /^map-day-(1|2|3|4|5|all)$/.exec(hash);
-    if (match) { mapDay = match[1]; switchTab('map', false, false); return; }
+    if (match) { mapDay = match[1] === '5' ? '4' : match[1]; switchTab('map', false, false); return; }
     const legacy = { route: 'map', 'map-mode': 'map', days: 'itinerary', oliveyoung: 'places', snowgear: 'places', seafood: 'places' };
     if (hash === 'oliveyoung') placeFilter = 'beauty';
     if (hash === 'snowgear') placeFilter = 'snow';
@@ -243,8 +248,12 @@
   }
   byId('date-option').value = preferences.date;
   byId('stay-area').value = preferences.base;
-  byId('date-option').addEventListener('change', event => { preferences.date = event.target.value; saveJSON(preferencesKey, preferences); renderDays(); renderPrices(); if (activeTab === 'map') renderMap(); });
+  byId('date-option').addEventListener('change', event => { preferences.date = data.confirmedStart; event.target.value = preferences.date; saveJSON(preferencesKey, preferences); renderDays(); renderPrices(); if (activeTab === 'map') renderMap(); });
   byId('stay-area').addEventListener('change', event => { preferences.base = event.target.value; saveJSON(preferencesKey, preferences); renderDays(); if (activeTab === 'map') renderMap(); });
+  byId('shopping-plan').value = preferences.shopping;
+  function syncShopping() { byId('snow-plan').disabled = preferences.shopping !== 'snow'; }
+  syncShopping();
+  byId('shopping-plan').addEventListener('change', event => { preferences.shopping = event.target.value; syncShopping(); saveJSON(preferencesKey, preferences); renderDays(); if (activeTab === 'map') renderMap(); });
   byId('snow-plan').value = preferences.snow;
   byId('snow-plan').addEventListener('change', event => { preferences.snow = event.target.value; saveJSON(preferencesKey, preferences); renderDays(); if (activeTab === 'map') renderMap(); });
   byId('include-optional').addEventListener('change', renderMap);
@@ -315,7 +324,7 @@
     if (!value.todos || Array.isArray(value.todos) || typeof value.todos !== 'object') return false;
     if (Object.keys(value.todos).length !== todoIds.length || !todoIds.every(id => Object.hasOwn(value.todos, id) && typeof value.todos[id] === 'boolean')) return false;
     const p = value.preferences;
-    return p && (p.date === '' || data.dateOptions.includes(p.date)) && Object.hasOwn(data.bases, p.base) && ['snowboard', 'ski'].includes(p.snow);
+    return p && (['', '2026-12-03', data.confirmedStart].includes(p.date)) && Object.hasOwn(data.bases, p.base) && ['snowboard', 'ski'].includes(p.snow) && (!Object.hasOwn(p, 'shopping') || ['hongdae', 'snow'].includes(p.shopping));
   }
   byId('todo-export').addEventListener('click', () => {
     const backup = { app: 'seoul-dec-2026-trip', schemaVersion: 1, exportedAt: new Date().toISOString(), todos, preferences };
@@ -334,13 +343,13 @@
       if (file.size > 64 * 1024) throw new Error('Too large');
       const backup = JSON.parse(await file.text());
       if (!validBackup(backup)) throw new Error('Invalid backup');
-      if (!confirm('匯入將覆寫本機 10 項勾選、日期與住宿區偏好，確定嗎？')) return;
+      if (!confirm('匯入將覆寫本機 10 項勾選與其他規劃偏好；日期固定依已確定的 2026/12/10–12/13，不還原舊日期。確定嗎？')) return;
       todos = Object.fromEntries(todoIds.map(id => [id, backup.todos[id]]));
-      preferences = { date: backup.preferences.date, base: backup.preferences.base, snow: backup.preferences.snow };
+      preferences = { date: data.confirmedStart, base: backup.preferences.base, snow: backup.preferences.snow, shopping: backup.preferences.shopping ?? 'hongdae' };
       saveJSON(todoKey, todos); saveJSON(preferencesKey, preferences);
-      byId('date-option').value = preferences.date; byId('stay-area').value = preferences.base; byId('snow-plan').value = preferences.snow;
+      byId('date-option').value = preferences.date; byId('stay-area').value = preferences.base; byId('snow-plan').value = preferences.snow; byId('shopping-plan').value = preferences.shopping; syncShopping();
       renderDays(); renderTodos(); renderPrices(); if (activeTab === 'map') renderMap();
-      notify('已還原本機備份；不代表任何訂位已完成');
+      notify('已還原本機備份；日期依已確定 2026/12/10–12/13，不代表任何訂位已完成');
     } catch { notify('無法匯入：請選此網站匯出的有效 JSON 備份（最多 64 KB）；原勾選未變更'); }
     finally { event.target.value = ''; }
   });

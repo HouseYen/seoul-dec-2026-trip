@@ -1,0 +1,31 @@
+Creator: Hermes Agent
+Version: 1.0
+Purpose: public dated rate excerpt, not a booking
+Source: https://www.agoda.com/best-western-premier-hotel-kukdo_14/hotel/seoul-kr.html?checkIn=2026-12-10&checkOut=2026-12-13&los=3&rooms=1&adults=1&children=0&currency=TWD
+Retrieved: 2026-11-02T14:33:05.156Z
+Observed: 2026-12-10 to 2026-12-13; 1 adult, 1 room, 3 nights
+Scope: displayed average before taxes and fees; no dated nightly all-in breakdown
+
+Provider text excerpt:
+Free WiFi
+
+See details
+
+Rewards & discounts
+
+Limited Time Offer. Price includes 33% discount!
+
+Cheapest price you've seen!
+
+Original Price: NT$ 7,319
+NT$ 7,319
+-37%
+NT$
+4,585
+Per night before taxes & fees
+1 room
+Book
+Pay later
+Pay later
+
++ Free Cancellation
